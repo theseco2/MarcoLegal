@@ -73,7 +73,7 @@ Class Articulo
 	=============================================*/
 	public function select($idley,$idtitulo,$idcapitulo)
 	{
-		$sql=	"SELECT idarticulo, descripcion
+		$sql=	"SELECT idarticulo, numero, nombre, descripcion
 				FROM articulo
 				WHERE idley='$idley' and idtitulo='$idtitulo' and idcapitulo='$idcapitulo'";
 		return ejecutarConsulta($sql);		

@@ -58,11 +58,15 @@ $idley=isset($_POST["idley"])? limpiarCadena($_POST["idley"]):"";
 
 	case 'listar_articulos':
 
-		$idley = $_REQUEST["idley"];
-		$idtitulo = $_REQUEST["idtitulo"];
-		$idcapitulo = $_REQUEST["idcapitulo"];
-		
-		$rspta=$ctlevaluacion->ctllistar_articulos($idley,$idtitulo,$idcapitulo);
+		//$idley = $_REQUEST["idley"];
+		//$idtitulo = $_REQUEST["idtitulo"];
+		//$idcapitulo = $_REQUEST["idcapitulo"];
+		$idinstitucion = 1;
+		$idley = 1;
+		$idtitulo = 1;
+		$idcapitulo = 1;
+	
+		$rspta=$ctlevaluacion->ctllistar_articulos($idinstitucion,$idley,$idtitulo,$idcapitulo);
  		echo json_encode($rspta);
 
 	break;

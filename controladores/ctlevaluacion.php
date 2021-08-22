@@ -57,13 +57,13 @@ class ctlEvaluacion {
 	//Informacion para la consulta por ley, titulo y capitulo********************
 	static public function ctllistar_articulos($idinstitucion,$idley,$idtitulo,$idcapitulo){
 		require_once "../modelos/Articulo.php";
- 		$rspta = Articulo::listar($idley,$idtitulo,$idcapitulo);
+ 		$rspta = Articulo::select($idley,$idtitulo,$idcapitulo);
  		//Vamos a declarar un array
  		$data= Array();
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idinstitucion.')"><i class="fa fa-pencil"></i></button>',
+ 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$idinstitucion.','.$idley.','.$idtitulo.','.$idcapitulo.','.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>',
  				"1"=>$reg->numero,
  				"2"=>$reg->nombre,
  				"3"=>$reg->descripcion

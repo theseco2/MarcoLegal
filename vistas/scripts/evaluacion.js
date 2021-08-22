@@ -1,18 +1,20 @@
 var tabla;
+var tabla1;
 
 /*=============================================
 	 FUNCION INICIAL DE CARGA
 =============================================*/
 function init(){
-	//listar_articulos();
 	mostrarform(false);
 	listar();
 
 	recuperaley();
 	recuperatitulo();
 	recuperacapitulo();
-	//listar_articulos();
+	listar_articulos();
 	$("#idley").change(recuperatitulo);
+	$("#idtitulo").change(recuperacapitulo);
+	$("#idcapitulo").change(listar_articulos);
 
 	$("#formulario").on("submit",function(e)
 	{
@@ -115,7 +117,6 @@ function recuperatitulo()
 	//var idley = document.getElementById("idley").value;
 	var idley = document.getElementById("idley").value;
 	//idley = seidley.;
-	alert('Paso '+ idley);
 
 	$.ajax({
 		type: 'POST',
@@ -154,12 +155,14 @@ function recuperacapitulo()
 //Función Listar_Articulos
 function listar_articulos()
 {
-	var idintitucionpar = getParameterByName('idinstitucion');
-	var idley = $("#idley").val();
-	var idtitulo = $("#idtitulo").val();
-	var idcapitulo = $("#idcapitulo").val();
+	alert('paso no ap');
+	var idinstitucionpar = getParameterByName('idinstitucion');
+	var idley = document.getElementById("idley").value;
+	var idtitulo = document.getElementById("idtitulo").value;
+	var idcapitulo = document.getElementById("idcapitulo").value;
+	alert('voy ' +idley);
 
-	tabla=$('#tbllistado1').dataTable(
+	tabla1=$('#tbllistado1').dataTable(
 	{
 		"aProcessing": true,//Activamos el procesamiento del datatables
 	    "aServerSide": true,//Paginación y filtrado realizados por el servidor
@@ -173,7 +176,7 @@ function listar_articulos()
 		"ajax":
 				{
 					url: '../../ajax/evaluacion.php?op=listar_articulos',
-					data:{idintitucion: idintitucionpar,idley: idley,idtitulo: idtitulo, idcapitulo: idcapitulo},
+					//data:{idinstitucion:idinstitucionpar, idley: idley,idtitulo: idtitulo, idcapitulo: idcapitulo},
 					type : "get",
 					dataType : "json",						
 					error: function(e){

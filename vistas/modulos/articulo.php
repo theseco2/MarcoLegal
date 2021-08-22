@@ -23,9 +23,9 @@ if ($_SESSION['administrar']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-						<button class="btn btn-primary" id="btnretroceso" onclick="retornatit()"><i class="fa fa-arrow-circle-left"></i></button>
+						<button class="btn btn-primary" id="btnretroceso" onclick="retornacap()"><i class="fa fa-arrow-circle-left"></i></button>
 						 <!--<a target="_self" href="../vistas/departamento.php?iddep=" + > <button class="btn btn-primary" id="btnretroceso"><i class="fa fa-arrow-circle-left"></i></button></a>-->
-                        <h1 class="box-title">Capitulos <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                        <h1 class="box-title">Articulos <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
 						  
                         <div class="box-tools pull-right">
                         </div>
@@ -38,7 +38,8 @@ if ($_SESSION['administrar']==1)
                             <th>Opciones</th>
 							<th>Ley</th>
 							<th>Titulo</th>
-                            <th>Descripción</th>
+							<th>Capitulo</th>
+							<th>Descripcion</th>
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -46,20 +47,32 @@ if ($_SESSION['administrar']==1)
                             <th>Opciones</th>
 							<th>Ley</th>
 							<th>Titulo</th>
-                            <th>Descripción</th>
+							<th>Capitulo</th>
+							<th>Descripcion</th>                    
                           </tfoot>
                         </table>
                     </div>
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Nombre(*):</label>
+                          
+						  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">                      
+							<label>Numero(*):</label>
                              <!-- <input type="hidden" name="idregion" id="idregion">-->
-							<input type="hidden" name="idcapitulo" id="idcapitulo">
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="60" placeholder="Descripcion" required>
-                          </div>
+							<input type="hidden" name="idarticulo" id="idarticulo">
+                            <input type="number" class="form-control" name="numero" id="numero" maxlength="9" placeholder="Numero" required>
+							</div>
+							
+							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">								
+							<label>Nombre(*):</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="60" placeholder="Nombre" required>
+							</div>
+							
+							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<label>Descripción(*):</label>
+                            <input type="textarea" rows="10" cols="40" class="form-control" name="descripcion" id="descripcion" maxlength="500" placeholder="Descripcion" required>
+							</div>
 						  
-                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
 
                             <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
@@ -83,7 +96,7 @@ else
 
 require 'footer.php';
 ?>
-<script type="text/javascript" src="../scripts/capitulo.js"></script>
+<script type="text/javascript" src="../scripts/articulo.js"></script>
 <?php 
 }
 ob_end_flush();

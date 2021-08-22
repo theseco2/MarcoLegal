@@ -56,7 +56,7 @@ class ctlArticulo {
  					'<button class="btn btn-danger" onclick="eliminar('.$reg->idarticulo.')"><i class="fa fa-trash"></i></button>',
  				"1"=>$reg->NOMLEY,
 				"2"=>$reg->NOMTITULO,
-				"3"=>$reg->NOMCAPITULO
+				"3"=>$reg->NOMCAPITULO,
 				"4"=>$reg->descripcionART
  				);
  		}

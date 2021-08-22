@@ -19,7 +19,9 @@ function init(){
 =============================================*/
 function limpiar()
 {
-	$("#idcapitulo").val("");
+	$("#idarticulo").val("");
+	$("#numero").val("");
+	$("#nombre").val("");
 	$("#descripcion").val("");
 }
 
@@ -35,8 +37,7 @@ function mostrarform(flag)
 		$("#formularioregistros").show();
 		$("#btnGuardar").prop("disabled",false);
 		$("#btnagregar").hide();
-		$("#btnretroceso").hide();
-		
+		$("#btnretroceso").hide();	
 	}
 	else
 	{
@@ -63,6 +64,7 @@ function listar()
 {
 	var idleypar = getParameterByName('idley');
 	var idtitpar = getParameterByName('idtit');
+	var idcappar = getParameterByName('idcap');
 	
 	tabla=$('#tbllistado').dataTable(
 	{
@@ -77,7 +79,7 @@ function listar()
 		        ],
 		"ajax":
 				{
-					url: '../../ajax/capitulo.php?op=listar&idley='+idleypar+'&idtit='+idtitpar,	 
+					url: '../../ajax/articulo.php?op=listar&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,	 
 					type : "get",
 					dataType : "json",						
 					error: function(e){
@@ -103,9 +105,10 @@ function guardaryeditar(e)
 	
 	var idleypar = getParameterByName('idley');
 	var idtitpar = getParameterByName('idtit');
+	var idcappar = getParameterByName('idcap');
 
 	$.ajax({
-		url: '../../ajax/capitulo.php?op=guardaryeditar&idley='+idleypar+'&idtit='+idtitpar,
+		url: '../../ajax/articulo.php?op=guardaryeditar&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -125,20 +128,25 @@ function guardaryeditar(e)
 /*=============================================
 	 FUNCION MOSTRAR REGISTRO
 =============================================*/
-function mostrar(idcapitulo)
+function mostrar(idarticulo)
 {
 	var idleypar = getParameterByName('idley');
 	var idtitpar = getParameterByName('idtit');
+	var idcappar = getParameterByName('idcap');
 
-	$.post('../../ajax/capitulo.php?op=mostrar&idley='+idleypar+'&idtit='+idtitpar,{idcapitulo : idcapitulo}, function(data, status)
+	$.post('../../ajax/articulo.php?op=mostrar&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,{idarticulo : idarticulo}, function(data, status)
 	{
 		data = JSON.parse(data);		
 		mostrarform(true);
 
+		$("#numero").val(data.numero);
+		$("#nombre").val(data.nombre);
 		$("#descripcion").val(data.descripcion);
 		$("#idley").val(data.idley);
 		$("#idtitulo").val(data.idtitulo);
- 		$("#idcapitulo").val(data.idcapitulo);
+		$("#idcapitulo").val(data.idcapitulo);
+ 		$("#idarticulo").val(data.idarticulo);
+		
 		
  	})
 }
@@ -146,15 +154,16 @@ function mostrar(idcapitulo)
 /*=============================================
 	 FUNCION ELIMINAR REGISTRO
 =============================================*/
-function eliminar(idcapitulo)
+function eliminar(idarticulo)
 {
-	bootbox.confirm("Se eliminara el capitulo. ¿Está seguro?", function(result){
+	bootbox.confirm("Se eliminara el articulo. ¿Está seguro?", function(result){
 		if(result)
         {
 			var idleypar = getParameterByName('idley');
 			var idtitpar = getParameterByName('idtit');
+			var idcappar = getParameterByName('idcap');
 			
-        	$.post('../../ajax/capitulo.php?op=eliminar&idley='+idleypar+'&idtit='+idtitpar,{idcapitulo : idcapitulo}, function(e){
+        	$.post('../../ajax/articulo.php?op=eliminar&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,{idarticulo : idarticulo}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	});	
@@ -165,12 +174,13 @@ function eliminar(idcapitulo)
 /*=============================================
 	 FUNCION retorna a titulo
 =============================================*/
-function retornatit()
+function retornacap()
 {
 	
 	var idleypar = getParameterByName('idley');
+	var idtitpar = getParameterByName('idtit');
 	
-	location.href = "../modulos/titulo.php?idley="+idleypar;
+	location.href = "../modulos/capitulo.php?idley="+idleypar+'&idtit='+idtitpar;
 	
 }
 

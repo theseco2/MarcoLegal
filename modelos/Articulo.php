@@ -58,12 +58,12 @@ Class Articulo
 	=============================================*/
 	public function listar($idley,$idtitulo,$idcapitulo)
 	{
-		$sql=	"SELECT a.idarticulo, b.descripcion as NOMLEY, c.descripcion as NOMTITULO, d.descripcion as NOMCAPITULO, a.descripcion  as descripcionCAP
+		$sql=	"SELECT a.idarticulo, b.descripcion as NOMLEY, c.descripcion as NOMTITULO, d.descripcion as NOMCAPITULO, a.descripcion  as descripcionART
 				FROM articulo a
 				INNER JOIN ley b ON a.idley = b.idley
 				INNER JOIN titulo c ON a.idtitulo = c.idtitulo
-				INNER JOIN capitulo d ON a.capitulo = d.capitulo
-				WHERE a.idley='$idley' and a.idtitulo='$idtitulo' and idcapitulo='$idcapitulo'";
+				INNER JOIN capitulo d ON a.idcapitulo = d.idcapitulo
+				WHERE a.idley='$idley' and a.idtitulo='$idtitulo' and a.idcapitulo='$idcapitulo'";
 				
 		return ejecutarConsulta($sql);		
 	}

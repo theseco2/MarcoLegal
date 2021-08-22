@@ -4,8 +4,15 @@ var tabla;
 	 FUNCION INICIAL DE CARGA
 =============================================*/
 function init(){
+	//listar_articulos();
 	mostrarform(false);
 	listar();
+
+	recuperaley();
+	recuperatitulo();
+	recuperacapitulo();
+	//listar_articulos();
+	$("#idley").change(recuperatitulo);
 
 	$("#formulario").on("submit",function(e)
 	{
@@ -91,8 +98,8 @@ function recuperaley()
 		url: '../../ajax/evaluacion.php?op=selectLey'
 		//data:{'peticion': 'selectUsuario'}
 	})
-	.done(function(lista_juzgado){
-		$('#idley').html(lista_juzgado)
+	.done(function(lista_ley){
+		$('#idley').html(lista_ley)
 		$('#idley').selectpicker('refresh');
 	})
 	.fail(function(){
@@ -103,13 +110,20 @@ function recuperaley()
 // Recupera Titulo
 function recuperatitulo()
 {
+	//var idley = $("#idley").val();
+	//$('#idtitulo').change();				
+	//var idley = document.getElementById("idley").value;
+	var idley = document.getElementById("idley").value;
+	//idley = seidley.;
+	alert('Paso '+ idley);
+
 	$.ajax({
 		type: 'POST',
-		url: '../../ajax/evaluacion.php?op=selectTitulo'
-		//data:{'peticion': 'selectUsuario'}
+		url: '../../ajax/evaluacion.php?op=selectTitulo&idley='+idley
+		//data:{idley: idley}
 	})
-	.done(function(lista_juzgado){
-		$('#idtitulo').html(lista_juzgado)
+	.done(function(lista_titulo){
+		$('#idtitulo').html(lista_titulo)
 		$('#idtitulo').selectpicker('refresh');
 	})
 	.fail(function(){
@@ -120,18 +134,56 @@ function recuperatitulo()
 // Recupera Capitulo
 function recuperacapitulo()
 {
+	var idley = document.getElementById("idley").value;
+	var idtitulo = document.getElementById("idtitulo").value;
+
 	$.ajax({
 		type: 'POST',
-		url: '../../ajax/evaluacion.php?op=selectCapitulo'
-		//data:{'peticion': 'selectUsuario'}
+		url: '../../ajax/evaluacion.php?op=selectCapitulo&idley='+idley+'&idtitulo='+idtitulo
+		//data:{idley: idley,idtitulo: idtitulo}
 	})
-	.done(function(lista_juzgado){
-		$('#idcapitulo').html(lista_juzgado)
+	.done(function(lista_capitulo){
+		$('#idcapitulo').html(lista_capitulo)
 		$('#idcapitulo').selectpicker('refresh');
 	})
 	.fail(function(){
 		alert('Error al Cargar Capitulo')
 	})
+}
+
+//Función Listar_Articulos
+function listar_articulos()
+{
+	var idintitucionpar = getParameterByName('idinstitucion');
+	var idley = $("#idley").val();
+	var idtitulo = $("#idtitulo").val();
+	var idcapitulo = $("#idcapitulo").val();
+
+	tabla=$('#tbllistado1').dataTable(
+	{
+		"aProcessing": true,//Activamos el procesamiento del datatables
+	    "aServerSide": true,//Paginación y filtrado realizados por el servidor
+	    dom: 'Bfrtip',//Definimos los elementos del control de tabla
+	    buttons: [		          
+		            'copyHtml5',
+		            'excelHtml5',
+		            'csvHtml5',
+		            'pdf'
+		        ],
+		"ajax":
+				{
+					url: '../../ajax/evaluacion.php?op=listar_articulos',
+					data:{idintitucion: idintitucionpar,idley: idley,idtitulo: idtitulo, idcapitulo: idcapitulo},
+					type : "get",
+					dataType : "json",						
+					error: function(e){
+						console.log(e.responseText);	
+					}
+				},
+		"bDestroy": true,
+		"iDisplayLength": 5,//Paginación
+	    "order": [[ 5, "asc" ]]//Ordenar (columna,orden)
+	}).DataTable();
 }
 
 init();

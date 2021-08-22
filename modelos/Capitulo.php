@@ -2,7 +2,7 @@
 //Incluímos inicialmente la conexión a la base de datos
 require "../config/Conexion.php";
 
-Class Titulo
+Class Capitulo
 {
 	/*=============================================
 	 METODO CONSTRUCTOR
@@ -14,78 +14,70 @@ Class Titulo
 	/*=============================================
 	 METODO INSERTAR REGISTROS
 	=============================================*/
-	public function insertar($idley,$descripcion)
+	public function insertar($idley,$idtitulo,$descripcion)
 	{
-		$sql=	"INSERT INTO titulo (idley,descripcion)
-				VALUES('$idley','$descripcion')";
+		$sql=	"INSERT INTO capitulo (idley, idtitulo, descripcion)
+				VALUES('$idley', '$idtitulo', '$descripcion')";
 		return ejecutarConsulta($sql);
 	}
 
 	/*=============================================
 	 METODO EDITAR REGISTROS
 	=============================================*/
-	public function editar($idtitulo,$idley,$descripcion)
+	public function editar($idcapitulo,$idtitulo,$idley,$descripcion)
 	{
-		$sql=	"UPDATE titulo
+		$sql=	"UPDATE capitulo
 				SET descripcion='$descripcion'
-				WHERE idtitulo='$idtitulo' and idley='$idley'";
+				WHERE idcapitulo='$idcapitulo' and idley='$idley' and idtitulo='$idtitulo'";
 		return ejecutarConsulta($sql);
 	}
 
 	/*=============================================
 	 METODO ELIMINAR REGISTROS
 	=============================================*/
-	public function eliminar($idtitulo,$idley)
+	public function eliminar($idcapitulo,$idtitulo,$idley)
 	{
-		$sql=	"DELETE FROM titulo
-				WHERE idtitulo='$idtitulo' and idley='$idley'";
+		$sql=	"DELETE FROM capitulo
+				WHERE idcapitulo='$idcapitulo' and idley='$idley' and idtitulo='$idtitulo'";
 		return ejecutarConsulta($sql);
 	}
 
 	/*=============================================
 	 METODO MOSTRAR REGISTROS
 	=============================================*/
-	public function mostrar($idtitulo,$idley)
+	public function mostrar($idcapitulo,$idtitulo,$idley)
 	{
 		$sql=	"SELECT *
-				FROM titulo
-				WHERE idtitulo='$idtitulo' and idley='$idley'";
+				FROM capitulo
+				WHERE idcapitulo='$idcapitulo' and idley='$idley' and idtitulo='$idtitulo'";
 		return ejecutarConsultaSimpleFila($sql);
 	}
 
 	/*=============================================
 	 METODO LISTAR REGISTROS
 	=============================================*/
-	public function listar($idley)
+	public function listar($idley,$idtitulo)
 	{
-		$sql=	"SELECT a.idtitulo, b.descripcion as NOMLEY, a.descripcion
-				FROM titulo a
+		$sql=	"SELECT a.idcapitulo as IDCAPI, b.descripcion as NOMLEY, c.descripcion as NOMTITULO, a.descripcion  as descripcionCAP
+				FROM capitulo a
 				INNER JOIN ley b ON a.idley = b.idley
-				WHERE a.idley='$idley'";
+				INNER JOIN titulo c ON a.idtitulo = c.idtitulo
+				WHERE a.idley='$idley' and a.idtitulo='$idtitulo'";
+				
 		return ejecutarConsulta($sql);		
 	}
 	
 	/*=============================================
 	 METODO LISTAR REGISTROS SELECT
 	=============================================*/
-	public function select($idley)
+	public function select($idley,$idtitulo)
 	{
-		$sql=	"SELECT idtitulo, descripcion
-				FROM titulo
-				WHERE idley='$idley'";
+		$sql=	"SELECT idcapitulo, descripcion
+				FROM capitulo
+				WHERE idley='$idley' and idtitulo='$idtitulo'";
 		return ejecutarConsulta($sql);		
 	}
-	
-	/*========================================================
-	 METODO VERIFICA SI HAY REGISTROS EN TABLAS DEPENDIENTES
-	==========================================================*/
-	public function verificapi($idtitulo,$idley)
-	{		
-		$sql=	"SELECT DISTINCT idtitulo, idley
-				FROM capitulo
-				WHERE idtitulo='$idtitulo' and idley ='$idley'";
-		return ejecutarConsultaSimpleFila($sql);
-	}
+
 }
 
 ?>

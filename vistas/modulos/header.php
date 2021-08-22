@@ -148,7 +148,7 @@ if (strlen(session_id()) < 1)
             if ($_SESSION['evaluacion']==1)
             {
               echo '<li>
-              <a href="calendario.php">
+              <a href="evaluacion.php">
                 <i class="fa fa-bars"></i> <span>Evaluación</span>
               </a>
             </li>';

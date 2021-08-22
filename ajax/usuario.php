@@ -78,7 +78,7 @@ switch ($_GET["op"]){
 		$logina=$_POST['logina'];
 	    $clavea=$_POST['clavea']; 
 
-		$rspta = $ctlusuario->ctlverificar($logina, $clavea);
+		$rspta = $ctlusuario->ctlverificar($logina, $clavea); 
 
 		$fetch=$rspta->fetch_object();
 

@@ -4,18 +4,18 @@ require_once "../modelos/Titulo.php";
 
 $titulo=new Titulo();
 
-class Titulo {
+class ctlTitulo {
 
 	/*=============================================
 	 METODO GUARDAR O EDITAR
 	=============================================*/
-	static public function ctlguardareditar($idtitulo,$idley,$nombre){
+	static public function ctlguardareditar($idtitulo,$idley,$descripción){
 
 		if (empty($idtitulo)){
-			return Titulo::insertar($idley,$nombre);
+			return Titulo::insertar($idley,$descripción);
 		}
 		else {
-			return Titulo::editar($idtitulo,$idley,$nombre);
+			return Titulo::editar($idtitulo,$idley,$descripción);
 		}
 
 	}
@@ -23,35 +23,35 @@ class Titulo {
 	/*=============================================
 	 METODO ELIMINAR
 	=============================================*/
-	static public function eliminar_controlador($idtitulo,$idley){
+	static public function ctleliminar($idtitulo,$idley){
 		return Titulo::eliminar($idtitulo,$idley);
 	}
 	
 	/*=============================================
 	 METODO MOSTRAR
 	=============================================*/
-	static public function mostrar_controlador($idtitulo,$idley){
+	static public function ctlmostrar($idtitulo,$idley){
 		return Titulo::mostrar($idtitulo,$idley);
 	}	
 	
 	/*=============================================
 	 METODO LISTAR
 	=============================================*/
-	static public function listar_controlador($idley){
+	static public function ctllistar($idley){
 		$rspta = Titulo::listar($idley);
  		//Vamos a declarar un array
  		$data= Array();
 		
-		$url='../vistas/municipio.php?iddep=';
-		$url2='?idreg=';
+		$url='../modulos/capitulo.php?idtit=';
+		$url2='?idley=';
 		
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->ID.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="verificamuni('.$reg->ID.')"><i class="fa fa-trash"></i></button>'.
-					'<a target="_self" href="'.$url.$reg->ID.$url2.$idley.'"> <button class="btn btn-success">Municipios</button></a>',
-				"1"=>$reg->NOMREGION,
- 				"2"=>$reg->NOMBRE
+ 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtitulo.')"><i class="fa fa-pencil"></i></button>'.
+ 					' <button class="btn btn-danger" onclick="verificamuni('.$reg->idtitulo.')"><i class="fa fa-trash"></i></button>'.
+					'<a target="_self" href="'.$url.$reg->idtitulo.$url2.$idley.'"> <button class="btn btn-success">Capitulos</button></a>',
+				"1"=>$reg->NOMLEY,
+ 				"2"=>$reg->descripcion
  				);
  		}
  		$results = array(
@@ -66,8 +66,8 @@ class Titulo {
 	/*=============================================
 	 METODO MOSTRAR
 	=============================================*/
-	static public function verificamuni_controlador($idtitulo,$idley){
-		return Titulo::verificamuni($idtitulo,$idley);
+	static public function ctlverificacapitulo($idtitulo,$idley){
+		return Titulo::verificacapitulo($idtitulo,$idley);
 	}	
 }
 

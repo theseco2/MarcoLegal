@@ -23,8 +23,9 @@ if ($_SESSION['administrar']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-						<a target="_self" href="../modulos/ley.php"> <button class="btn btn-primary" id="btnretroceso"><i class="fa fa-arrow-circle-left"></i></button></a>
-                        <h1 class="box-title">Titulos <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+						<button class="btn btn-primary" id="btnretroceso" onclick="retornatit()"><i class="fa fa-arrow-circle-left"></i></button>
+						 <!--<a target="_self" href="../vistas/departamento.php?iddep=" + > <button class="btn btn-primary" id="btnretroceso"><i class="fa fa-arrow-circle-left"></i></button></a>-->
+                        <h1 class="box-title">Capitulos <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
 						  
                         <div class="box-tools pull-right">
                         </div>
@@ -36,23 +37,25 @@ if ($_SESSION['administrar']==1)
                           <thead>
                             <th>Opciones</th>
 							<th>Ley</th>
-                            <th>Descripcion</th>
+							<th>Titulo</th>
+                            <th>Descripción</th>
                           </thead>
                           <tbody>                            
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
 							<th>Ley</th>
-                            <th>Descripcion</th>
+							<th>Titulo</th>
+                            <th>Descripción</th>
                           </tfoot>
                         </table>
                     </div>
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Descripcion(*):</label>
+                            <label>Nombre(*):</label>
                              <!-- <input type="hidden" name="idregion" id="idregion">-->
-							<input type="hidden" name="idtitulo" id="idtitulo">
+							<input type="hidden" name="idcapitulo" id="idcapitulo">
                             <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="60" placeholder="Descripcion" required>
                           </div>
 						  
@@ -80,7 +83,7 @@ else
 
 require 'footer.php';
 ?>
-<script type="text/javascript" src="../scripts/titulo.js"></script>
+<script type="text/javascript" src="../scripts/capitulo.js"></script>
 <?php 
 }
 ob_end_flush();

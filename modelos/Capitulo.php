@@ -24,7 +24,7 @@ Class Capitulo
 	/*=============================================
 	 METODO EDITAR REGISTROS
 	=============================================*/
-	public function editar($idcapitulo,$idtitulo,$idley,$descripcion)
+	public function editar($idcapitulo,$idley,$idtitulo,$descripcion)
 	{
 		$sql=	"UPDATE capitulo
 				SET descripcion='$descripcion'
@@ -35,7 +35,7 @@ Class Capitulo
 	/*=============================================
 	 METODO ELIMINAR REGISTROS
 	=============================================*/
-	public function eliminar($idcapitulo,$idtitulo,$idley)
+	public function eliminar($idcapitulo,$idley,$idtitulo)
 	{
 		$sql=	"DELETE FROM capitulo
 				WHERE idcapitulo='$idcapitulo' and idley='$idley' and idtitulo='$idtitulo'";
@@ -45,7 +45,7 @@ Class Capitulo
 	/*=============================================
 	 METODO MOSTRAR REGISTROS
 	=============================================*/
-	public function mostrar($idcapitulo,$idtitulo,$idley)
+	public function mostrar($idcapitulo,$idley,$idtitulo)
 	{
 		$sql=	"SELECT *
 				FROM capitulo
@@ -58,7 +58,7 @@ Class Capitulo
 	=============================================*/
 	public function listar($idley,$idtitulo)
 	{
-		$sql=	"SELECT a.idcapitulo as IDCAPI, b.descripcion as NOMLEY, c.descripcion as NOMTITULO, a.descripcion  as descripcionCAP
+		$sql=	"SELECT a.idcapitulo, b.descripcion as NOMLEY, c.descripcion as NOMTITULO, a.descripcion  as descripcionCAP
 				FROM capitulo a
 				INNER JOIN ley b ON a.idley = b.idley
 				INNER JOIN titulo c ON a.idtitulo = c.idtitulo
@@ -78,6 +78,7 @@ Class Capitulo
 		return ejecutarConsulta($sql);		
 	}
 
+//Falta validar integridad de datos
 }
 
 ?>

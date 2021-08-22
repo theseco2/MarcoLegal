@@ -42,7 +42,7 @@ class ctlLey {
  		//Vamos a declarar un array
  		$data= Array();
 		
-		$url='../vistas/modulos/titulo.php?idreg=';
+		$url='../modulos/titulo.php?idley=';
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
@@ -64,8 +64,8 @@ class ctlLey {
 	/*=============================================
 	 METODO MOSTRAR
 	=============================================*/
-	static public function ctlverificadepa($idley){
-		return Ley::verificadepa($idley);
+	static public function ctlverificatitulo($idley){
+		return Ley::verificatitulo($idley);
 	}	
 }
 

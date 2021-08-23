@@ -77,6 +77,12 @@ class ctlEvaluacion {
  		return $results;
 	}
 
+	//Mostrar******************************************************
+	static public function ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
+		return Evaluacion::mostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
+	}	
+	/**************************************************************/
+
 }
 
 ?>

@@ -4,7 +4,7 @@ require_once "../controladores/ctlevaluacion.php";
 $ctlevaluacion = new ctlEvaluacion();
 
 //Variables manejo campos de tabla
-$idley=isset($_POST["idley"])? limpiarCadena($_POST["idley"]):"";
+$idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
 //$nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
 
 	/*=============================================
@@ -58,17 +58,26 @@ $idley=isset($_POST["idley"])? limpiarCadena($_POST["idley"]):"";
 
 	case 'listar_articulos':
 
-		//$idley = $_REQUEST["idley"];
-		//$idtitulo = $_REQUEST["idtitulo"];
-		//$idcapitulo = $_REQUEST["idcapitulo"];
-		$idinstitucion = 1;
-		$idley = 1;
-		$idtitulo = 1;
-		$idcapitulo = 1;
-	
-		$rspta=$ctlevaluacion->ctllistar_articulos($idinstitucion,$idley,$idtitulo,$idcapitulo);
+		$idley = $_REQUEST["idley"];
+		$idtitulo = $_REQUEST["idtitulo"];
+		$idcapitulo = $_REQUEST["idcapitulo"];
+
+		$rspta=$ctlevaluacion->ctllistar_articulos($idley,$idtitulo,$idcapitulo);
  		echo json_encode($rspta);
 
+	break;
+
+	case 'mostrar':
+
+		$idinstitucion = $_REQUEST["idinstitucion"];
+		$idley = $_REQUEST["idley"];
+		$idtitulo = $_REQUEST["idtitulo"];
+		$idcapitulo = $_REQUEST["idcapitulo"];
+		$idarticulo = $_REQUEST["idarticulo"];
+
+		$rspta=$ctlevaluacion->ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
+ 		//Codificar el resultado utilizando json
+ 		echo json_encode($rspta);
 	break;
 	
 }

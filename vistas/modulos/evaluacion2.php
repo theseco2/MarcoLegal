@@ -45,7 +45,7 @@ if ($_SESSION['evaluacion']==1)
                           <select name="idcapitulo" id="idcapitulo" class="form-control selectpicker" data-live-search="true" required>
                           </select>
                         </div>
-                        <table id="tbllistado1" class="table table-striped table-bordered table-condensed table-hover">
+                        <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opcion</th>
                             <th>Numero</th>
@@ -80,7 +80,7 @@ else
 require 'footer.php';
 ?>
 
-<script type="text/javascript" src="../scripts/evaluacion.js"></script>
+<script type="text/javascript" src="../scripts/evaluacion2.js"></script>
 <?php 
 }
 ob_end_flush();

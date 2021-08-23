@@ -62,11 +62,11 @@ $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstituci
 		$idtitulo = $_REQUEST["idtitulo"];
 		$idcapitulo = $_REQUEST["idcapitulo"];
 
-		$rspta=$ctlevaluacion->ctllistar_articulos($idley,$idtitulo,$idcapitulo);
+		$rspta=$ctlevaluacion->ctllistar_articulos($idinstitucion,$idley,$idtitulo,$idcapitulo);
  		echo json_encode($rspta);
 
 	break;
-
+/*
 	case 'mostrar':
 
 		$idinstitucion = $_REQUEST["idinstitucion"];
@@ -79,6 +79,6 @@ $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstituci
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
-	
+*/	
 }
 ?> 

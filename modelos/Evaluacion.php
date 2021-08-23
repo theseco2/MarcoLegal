@@ -13,11 +13,11 @@ Class Evaluacion
 	}
 
 	//Implementar un método para mostrar los datos de un registro a modificar
-	public function mostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
+	/*public function mostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
 	{
 		$sql="SELECT * FROM usuario WHERE idusuario='$idusuario'";
 		return ejecutarConsultaSimpleFila($sql);
-	}
+	}*/
 	
 }
 

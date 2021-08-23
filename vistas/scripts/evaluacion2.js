@@ -156,9 +156,9 @@ function listar()
 }
 
 //Muestra Informacion del Formulario
-function mostrar(idinstitucion,idley,idtitulo,idcapitulo,idarticulo)
-{
-
+//function mostrar(idinstitucion,idley,idtitulo,idcapitulo,idarticulo)
+//{
+/*
 	$.post("../../ajax/evaluacion.php?op=mostrar",{idinstitucion : idinstitucion,idley : idley,idtitulo : idtitulo,idcapitulo : idcapitulo,idarticulo : idarticulo}, function(data, status)
 	{
 		data = JSON.parse(data);		
@@ -176,6 +176,5 @@ function mostrar(idinstitucion,idley,idtitulo,idcapitulo,idarticulo)
 		$("#idusuario").val(data.idusuario);
 		});
  	});
-}
-
+}*/
 init();

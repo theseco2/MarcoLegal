@@ -45,6 +45,7 @@ if ($_SESSION['evaluacion']==1)
                           <select name="idcapitulo" id="idcapitulo" class="form-control selectpicker" data-live-search="true" required>
                           </select>
                         </div>
+                        <br><br><br><br>
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opcion</th>

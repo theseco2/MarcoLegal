@@ -78,7 +78,7 @@ class ctlEvaluacion {
 	}
 
 	//Mostrar******************************************************
-	static public function ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
+	/*static public function ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
 		return Evaluacion::mostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
 	}	
 	/**************************************************************/

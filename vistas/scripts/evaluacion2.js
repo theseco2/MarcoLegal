@@ -16,7 +16,7 @@ function init(){
 
 	$("#formulario").on("submit",function(e)
 	{
-		//guardaryeditar(e);	
+		guardaryeditar(e);	
 	})
 }
 
@@ -25,10 +25,10 @@ function init(){
 =============================================*/
 function limpiar()
 {
-	$("#idarticulo").val("");
-	$("#numero").val("");
-	$("#nombre").val("");
-	$("#descripcion").val("");
+	//$("#idarticulo").val("");
+	//$("#numero").val("");
+	//$("#nombre").val("");
+	//$("#descripcion").val("");
 }
 
 /*=============================================
@@ -156,25 +156,49 @@ function listar()
 }
 
 //Muestra Informacion del Formulario
-//function mostrar(idinstitucion,idley,idtitulo,idcapitulo,idarticulo)
-//{
-/*
-	$.post("../../ajax/evaluacion.php?op=mostrar",{idinstitucion : idinstitucion,idley : idley,idtitulo : idtitulo,idcapitulo : idcapitulo,idarticulo : idarticulo}, function(data, status)
+function mostrar(idarticulo)
+{
+	var idley = document.getElementById("idley").value;
+	var idtitulo = document.getElementById("idtitulo").value;
+	var idcapitulo = document.getElementById("idcapitulo").value;
+
+	$.post("../../ajax/evaluacion.php?op=mostrar&idley="+idley,{idarticulo : idarticulo}, function(data, status)
 	{
 		data = JSON.parse(data);		
 		mostrarform(true);
+		$("#marca").val(data.marca);
+		//$("#observacion").val(data.observacion);
+		$("#descripcionIns").val(data.descripcionIns);
+		$("#descripcionLey").val(data.descripcionLey);
+		$("#descripcionTit").val(data.descripcionTit);
+		$("#descripcionCap").val(data.descripcionCap);
+		$("#descripcionArt").val(data.descripcionArt);
+ 	})
+}
 
-		$("#idrol").val(data.idrol);
-		$('#idrol').selectpicker('refresh');
-		$('#profesional').val(data.profesional);
-		$('#profesional').selectpicker('refresh');
-		$("#nombre").val(data.nombre);
-		$("#apellido").val(data.apellido);
-		$("#telefono").val(data.telefono);
-		$("#login").val(data.login);
-		//$("#clave").val(data.clave);
-		$("#idusuario").val(data.idusuario);
-		});
- 	});
-}*/
+// Agregar o Editar Registros
+function guardaryeditar(e)
+{
+	e.preventDefault(); //No se activará la acción predeterminada del evento
+	$("#btnGuardar").prop("disabled",true);
+	var formData = new FormData($("#formulario")[0]);
+
+	$.ajax({
+		url: "../../ajax/evaluacion.php?op=guardaryeditar",
+	    type: "POST",
+	    data: formData,
+	    contentType: false,
+	    processData: false,
+
+	    success: function(datos)
+	    {                    
+	          bootbox.alert(datos);	          
+	          mostrarform(false);
+	          tabla.ajax.reload();
+	    }
+
+	});
+	limpiar();
+}
+
 init();

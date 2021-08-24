@@ -5,13 +5,34 @@ $ctlevaluacion = new ctlEvaluacion();
 
 //Variables manejo campos de tabla
 $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
-//$nombre=isset($_POST["nombre"])? limpiarCadena($_POST["nombre"]):"";
+$idley=isset($_POST["idley"])? limpiarCadena($_POST["idley"]):"";
+$idtitulo=isset($_POST["idtitulo"])? limpiarCadena($_POST["idtitulo"]):"";
+$idcapitulo=isset($_POST["idcapitulo"])? limpiarCadena($_POST["idcapitulo"]):"";
+$idarticulo=isset($_POST["idarticulo"])? limpiarCadena($_POST["idarticulo"]):"";
+$idevaluacion=isset($_POST["idevaluacion"])? limpiarCadena($_POST["idevaluacion"]):"";
+$marca=isset($_POST["marca"])? limpiarCadena($_POST["marca"]):"";
+$observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):"";
+
 
 	/*=============================================
 	 FUNCION A EJECUTAR
 	=============================================*/
 	switch ($_GET["op"]){
 	
+	//Guardar o editar registros	
+	case 'guardaryeditar':
+
+		$respuesta = $ctlevaluacion->ctlguardareditar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion);
+		//$respuesta = $ctlevaluacion->ctlguardareditar($idevaluacion,1,1,1,1,1,$marca,$observacion);
+		if (empty($idevaluacion)){
+			echo $respuesta ? "Evaluacion ingresada exitosamente" : "Evaluacion no se pudo ingresar";
+		}
+		else {
+			echo $respuesta ? "Evaluacion actualizada exitosamente" : "Evaluacion no se pudo actualizar";
+		}
+
+	break;
+
 	//Listar registros
 	case 'listar':
 		$respuesta = $ctlevaluacion->ctllistar();
@@ -66,19 +87,26 @@ $idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstituci
  		echo json_encode($rspta);
 
 	break;
-/*
+
 	case 'mostrar':
 
-		$idinstitucion = $_REQUEST["idinstitucion"];
-		$idley = $_REQUEST["idley"];
-		$idtitulo = $_REQUEST["idtitulo"];
-		$idcapitulo = $_REQUEST["idcapitulo"];
-		$idarticulo = $_REQUEST["idarticulo"];
+		//$idinstitucionM = $_REQUEST["idinstitucion"];
+		//$idley = $_REQUEST["idley"];
+		//$idtituloM = $_REQUEST["idtitulo"];
+		//$idcapituloM = $_REQUEST["idcapitulo"];
+		$idarticuloM = $_REQUEST["idarticulo"];
+		$idleyM = $_GET['idley'];
 
-		$rspta=$ctlevaluacion->ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
+		$idinstitucionM = 1;
+		//$idleyM = 1;
+		$idtituloM = 1;
+		$idcapituloM = 1;
+		//$idarticuloM =1;
+
+		$rspta=$ctlevaluacion->ctlmostrar($idinstitucionM,$idleyM,$idtituloM,$idcapituloM,$idarticuloM);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
 	break;
-*/	
+	
 }
 ?> 

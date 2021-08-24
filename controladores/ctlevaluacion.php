@@ -5,6 +5,20 @@ require_once "../modelos/Evaluacion.php";
 $evaluacion=new Evaluacion();
 
 class ctlEvaluacion {
+
+	/*=============================================
+	 METODO GUARDAR O EDITAR
+	=============================================*/
+	static public function ctlguardareditar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion){
+
+		if (empty($idevaluacion)){
+			return Evaluacion::insertar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion);
+		}
+		else {
+			return Evaluacion::editar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion);
+		}
+
+	}
 	
 	/*=============================================
 	 METODO LISTAR
@@ -63,7 +77,8 @@ class ctlEvaluacion {
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$idinstitucion.','.$idley.','.$idtitulo.','.$idcapitulo.','.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>',
+ 				//"0"=>'<button class="btn btn-warning" onclick="mostrar('.$idinstitucion.','.$idley.','.$idtitulo.','.$idcapitulo.','.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>',
+ 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>',
  				"1"=>$reg->numero,
  				"2"=>$reg->nombre,
  				"3"=>$reg->descripcion
@@ -78,7 +93,7 @@ class ctlEvaluacion {
 	}
 
 	//Mostrar******************************************************
-	/*static public function ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
+	static public function ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
 		return Evaluacion::mostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
 	}	
 	/**************************************************************/

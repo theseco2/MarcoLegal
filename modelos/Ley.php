@@ -28,7 +28,7 @@ Class Ley
 	{
 		$sql=	"UPDATE ley
 				SET descripcion='$descripcion'
-				WHERE ID='$idley'";
+				WHERE idley='$idley'";
 		return ejecutarConsulta($sql);
 	}
 
@@ -38,7 +38,7 @@ Class Ley
 	public function eliminar($idley)
 	{
 		$sql=	"DELETE FROM ley
-				WHERE ID='$idley'";
+				WHERE idley='$idley'";
 		return ejecutarConsulta($sql);
 	}
 
@@ -49,7 +49,7 @@ Class Ley
 	{
 		$sql=	"SELECT *
 				FROM ley
-				WHERE ID='$idley'";
+				WHERE idley='$idley'";
 		return ejecutarConsultaSimpleFila($sql);
 	}
 
@@ -76,7 +76,7 @@ Class Ley
 	/*========================================================
 	 METODO VERIFICA SI HAY REGISTROS EN TABLAS DEPENDIENTES
 	==========================================================*/
-	public function verificaley($idley)
+	public function verificatitulo($idley)
 	{		
 		$sql=	"SELECT DISTINCT idley
 				FROM titulo

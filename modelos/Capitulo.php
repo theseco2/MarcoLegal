@@ -78,7 +78,16 @@ Class Capitulo
 		return ejecutarConsulta($sql);		
 	}
 
-//Falta validar integridad de datos
+	/*========================================================
+	 METODO VERIFICA SI HAY REGISTROS EN TABLAS DEPENDIENTES
+	==========================================================*/
+	public function verificaarticulo($idcapitulo,$idley,$idtitulo)
+	{		
+		$sql=	"SELECT DISTINCT idcapitulo
+				FROM articulo
+				WHERE idcapitulo='$idcapitulo' and idtitulo='$idtitulo' and idley ='$idley'";
+		return ejecutarConsultaSimpleFila($sql);
+	}
 }
 
 ?>

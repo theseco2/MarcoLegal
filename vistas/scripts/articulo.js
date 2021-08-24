@@ -172,6 +172,30 @@ function eliminar(idarticulo)
 }
 
 /*=============================================
+	 FUNCION VALIDA evaluacion
+=============================================*/
+function verificaevalua(idarticulo)
+{
+	
+	var idleypar = getParameterByName('idley');
+	var idtitpar = getParameterByName('idtit');
+	var idcappar = getParameterByName('idcap');
+	$.post('../../ajax/articulo.php?op=verificaevalua&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,{idarticulo : idarticulo}, function(data, status) 
+    {
+    	data = JSON.parse(data);
+		
+        if (data == null)
+        {
+		
+        	eliminar(idarticulo);       
+        }
+        else
+        {
+            bootbox.alert("Existen registros relacionados, imposible eliminar");
+        }
+    });
+}
+/*=============================================
 	 FUNCION retorna a titulo
 =============================================*/
 function retornacap()

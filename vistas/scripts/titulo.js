@@ -154,10 +154,10 @@ function eliminar(idtitulo)
 /*=============================================
 	 FUNCION VALIDA departamento
 =============================================*/
-function verificacapi(idtitulo)
+function verificacapitulo(idtitulo)
 {
 	var idleypar = getParameterByName('idley');
-	$.post('../../ajax/titulo.php?op=verificacapi&idley='+idleypar,{idtitulo : idtitulo}, function(data, status) 
+	$.post('../../ajax/titulo.php?op=verificacapitulo&idley='+idleypar,{idtitulo : idtitulo}, function(data, status) 
     {
     	data = JSON.parse(data);
 		

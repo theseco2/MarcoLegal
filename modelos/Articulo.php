@@ -79,7 +79,16 @@ Class Articulo
 		return ejecutarConsulta($sql);		
 	}
 	
-//pendiente integridad referencial
+	/*========================================================
+	 METODO VERIFICA SI HAY REGISTROS EN TABLAS DEPENDIENTES
+	==========================================================*/
+	public function verificaevalua($idarticulo,$idley,$idtitulo,$idcapitulo)
+	{		
+		$sql=	"SELECT DISTINCT idarticulo
+				FROM evaluacion
+				WHERE idarticulo='$idarticulo' and idcapitulo='$idcapitulo' and idtitulo='$idtitulo' and idley ='$idley'";
+		return ejecutarConsultaSimpleFila($sql);
+	}
 
 }
 

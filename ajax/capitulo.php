@@ -51,6 +51,11 @@ $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):
  		echo json_encode($respuesta);
 	break;
 	
-	//Falta verificación de integridad con la tabla articulosPENDIENTE
+	//Verifica articulo
+	case 'verificaarticulo':
+		$idley= $_GET['idley'];
+		$idtitulo= $_GET['idtit'];
+		$respuesta = $ctlcapitulo->ctlverificaarticulo($idcapitulo,$idley,$idtitulo);
+		echo json_encode($respuesta);
 }
 ?> 

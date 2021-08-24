@@ -9,7 +9,7 @@ $idtitulo=isset($_POST["idtitulo"])? limpiarCadena($_POST["idtitulo"]):"";
 $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
 
 //recupera el id de ley
-$idley = $_GET['idley'];
+
 
 	/*=============================================
 	 FUNCION A EJECUTAR
@@ -17,7 +17,7 @@ $idley = $_GET['idley'];
 	switch ($_GET["op"]){
 	//Guardar o editar registros	
 	case 'guardaryeditar':
-		
+		$idley = $_GET['idley'];
 		
 		$respuesta = $ctltitulo->ctlguardareditar($idtitulo,$idley,$descripcion);
 		if (empty($idtitulo)){
@@ -31,12 +31,14 @@ $idley = $_GET['idley'];
 	
 	//Eliminar registros
 	case 'eliminar':
+		$idley = $_GET['idley'];
 		$respuesta = $ctltitulo->ctleliminar($idtitulo,$idley);
  		echo $respuesta ? "Titulo eliminado exitosamente" : "Titulo no se puede eliminar";
 	break;
 	
 	//Mostrar registros
 	case 'mostrar':
+		$idley = $_GET['idley'];
 		$respuesta = $ctltitulo->ctlmostrar($idtitulo,$idley);
  		//Codificar el resultado utilizando json
  		echo json_encode($respuesta);
@@ -44,13 +46,15 @@ $idley = $_GET['idley'];
 	
 	//Listar registros
 	case 'listar':
+		$idley = $_GET['idley'];
 		$respuesta = $ctltitulo->ctllistar($idley);
  		echo json_encode($respuesta);
 	break;
 	
 	//Verifica capitulo
-	case 'verificacapi':
-		$respuesta = $ctltitulo->verificacapi($idtitulo,$idley);
+	case 'verificacapitulo':
+		$idley = $_GET['idley'];
+		$respuesta = $ctltitulo->ctlverificacapitulo($idtitulo,$idley);
 		echo json_encode($respuesta);
 
 	break;

@@ -148,6 +148,7 @@ function mostrar(idcapitulo)
 =============================================*/
 function eliminar(idcapitulo)
 {
+	
 	bootbox.confirm("Se eliminara el capitulo. ¿Está seguro?", function(result){
 		if(result)
         {
@@ -161,6 +162,31 @@ function eliminar(idcapitulo)
         }
 	})
 }
+
+/*=============================================
+	 FUNCION VALIDA articulo
+=============================================*/
+function verificaarticulo(idcapitulo)
+{
+	
+	var idleypar = getParameterByName('idley');
+	var idtitpar = getParameterByName('idtit');
+	$.post('../../ajax/capitulo.php?op=verificaarticulo&idley='+idleypar+'&idtit='+idtitpar,{idcapitulo : idcapitulo}, function(data, status) 
+    {
+    	data = JSON.parse(data);
+		
+        if (data == null)
+        {
+		
+        	eliminar(idcapitulo);       
+        }
+        else
+        {
+            bootbox.alert("Existen registros relacionados, imposible eliminar");
+        }
+    });
+}
+
 
 /*=============================================
 	 FUNCION retorna a titulo

@@ -55,9 +55,8 @@ class ctlCapitulo {
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idcapitulo.')"><i class="fa fa-pencil"></i></button>'.
- 					'<button class="btn btn-danger" onclick="eliminar('.$reg->idcapitulo.')"><i class="fa fa-trash"></i></button>'.														
-					'<a target="_self" href="'.$url.$reg->idcapitulo.$url2.$idleyint.$url3.$idtituloint.'"> <button class="btn btn-success">Articulos</button></a>',
-					
+					'<button class="btn btn-danger" onclick="verificaarticulo('.$reg->idcapitulo.')"><i class="fa fa-trash"></i></button>'.						
+					'<a target="_self" href="'.$url.$reg->idcapitulo.$url2.$idleyint.$url3.$idtituloint.'"> <button class="btn btn-success">Articulos</button></a>',			
  				"1"=>$reg->NOMLEY,
 				"2"=>$reg->NOMTITULO,
 				"3"=>$reg->descripcionCAP
@@ -71,6 +70,13 @@ class ctlCapitulo {
  		return $results;
 	}
 	
+		
+	/*=============================================
+	 METODO MOSTRAR
+	=============================================*/
+	static public function ctlverificaarticulo($idcapitulo,$idley,$idtitulo){
+		return Capitulo::verificaarticulo($idcapitulo,$idley,$idtitulo);
+	}
 }
 
 ?>

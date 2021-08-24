@@ -79,9 +79,9 @@ Class Titulo
 	/*========================================================
 	 METODO VERIFICA SI HAY REGISTROS EN TABLAS DEPENDIENTES
 	==========================================================*/
-	public function verificapi($idtitulo,$idley)
+	public function verificacapitulo($idtitulo,$idley)
 	{		
-		$sql=	"SELECT DISTINCT idtitulo, idley
+		$sql=	"SELECT DISTINCT idtitulo
 				FROM capitulo
 				WHERE idtitulo='$idtitulo' and idley ='$idley'";
 		return ejecutarConsultaSimpleFila($sql);

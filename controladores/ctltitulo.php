@@ -48,7 +48,7 @@ class ctlTitulo {
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtitulo.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="verificamuni('.$reg->idtitulo.')"><i class="fa fa-trash"></i></button>'.
+ 					' <button class="btn btn-danger" onclick="verificacapitulo('.$reg->idtitulo.')"><i class="fa fa-trash"></i></button>'.
 					'<a target="_self" href="'.$url.$reg->idtitulo.$url2.$idley.'"> <button class="btn btn-success">Capitulos</button></a>',
 				"1"=>$reg->NOMLEY,
  				"2"=>$reg->descripcion

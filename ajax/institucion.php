@@ -1,10 +1,10 @@
 <?php 
-require_once "../controladores/ctlley.php";
+require_once "../controladores/ctlinstitucion.php";
  
-$ctlley = new ctlLey();
+$ctlinstitucion = new ctlInstitucion();
 
 //Variables manejo campos de tabla
-$idley=isset($_POST["idley"])? limpiarCadena($_POST["idley"]):"";
+$idinstitucion=isset($_POST["idinstitucion"])? limpiarCadena($_POST["idinstitucion"]):"";
 $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
 
 	/*=============================================
@@ -14,40 +14,40 @@ $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):
 	//Guardar o editar registros	
 	case 'guardaryeditar':
 
-		$respuesta = $ctlley->ctlguardareditar($idley,$descripcion);
-		if (empty($idley)){
-			echo $respuesta ? "Ley ingresada exitosamente" : "Ley no se pudo ingresar";
+		$respuesta = $ctlinstitucion->ctlguardareditar($idinstitucion,$descripcion);
+		if (empty($idinstitucion)){
+			echo $respuesta ? "Institucion ingresada exitosamente" : "Institucion no se pudo ingresar";
 		}
 		else {
-			echo $respuesta ? "Ley actualizada exitosamente" : "Ley no se pudo actualizar";
+			echo $respuesta ? "Institucion actualizada exitosamente" : "Institucion no se pudo actualizar";
 		}
 
 	break;
 	
 	//Eliminar registros
 	case 'eliminar':
-		$respuesta = $ctlley->ctleliminar($idley);
- 		echo $respuesta ? "Ley eliminada exitosamente" : "Ley no se puede eliminar";
+		$respuesta = $ctlinstitucion->ctleliminar($idinstitucion);
+ 		echo $respuesta ? "Institucion eliminada exitosamente" : "Institucion no se puede eliminar";
 	break;
 	
 	//Mostrar registros
 	case 'mostrar':
-		$respuesta = $ctlley->ctlmostrar($idley);
+		$respuesta = $ctlinstitucion->ctlmostrar($idinstitucion);
  		//Codificar el resultado utilizando json
  		echo json_encode($respuesta);
 	break;
 	
 	//Listar registros
 	case 'listar':
-		$respuesta = $ctlley->ctllistar();
+		$respuesta = $ctlinstitucion->ctllistar();
  		echo json_encode($respuesta);
 	break;
 	
 	
-	case 'verificatitulo':
-		//$idleycom=$_GET[$idley];
-		//echo $idley;
-		$respuesta = $ctlley->ctlverificatitulo($idley);
+	case 'verificaevalua':
+		//$idinstitucioncom=$_GET[$idinstitucion];
+		//echo $idinstitucion;
+		$respuesta = $ctlinstitucion->ctlverificaevalua($idinstitucion);
 		//$fetch=$respuesta->fetch_object();
 		echo json_encode($respuesta);
 

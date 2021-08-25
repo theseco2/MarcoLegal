@@ -30,24 +30,30 @@ if ($_SESSION['administrar']==1)
                         <div class="box-tools pull-right">
                         </div>
                     </div>
+					<div class="box-header with-border">
+					<label>Ley:</label>
+					<input type="text" class="form-control" name="descripcionley" id="descripcionley" maxlength="60" disabled>
+					<label>Titulo:</label>
+					<input type="text" class="form-control" name="descripciontitulo" id="descripciontitulo" maxlength="60" disabled>
+					<label>Capitulo:</label>
+					<input type="text" class="form-control" name="descripcioncapitulo" id="descripcioncapitulo" maxlength="60" disabled>
+					 </div>
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones</th>
-							<th>Ley</th>
-							<th>Titulo</th>
-							<th>Capitulo</th>
+							<th>Numero</th>
+							<th>Nombre</th>
 							<th>Descripcion</th>
                           </thead>
                           <tbody>                            
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
-							<th>Ley</th>
-							<th>Titulo</th>
-							<th>Capitulo</th>
+							<th>Numero</th>
+							<th>Nombre</th>
 							<th>Descripcion</th>                    
                           </tfoot>
                         </table>

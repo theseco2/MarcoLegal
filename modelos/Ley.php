@@ -50,6 +50,7 @@ Class Ley
 		$sql=	"SELECT *
 				FROM ley
 				WHERE idley='$idley'";
+				
 		return ejecutarConsultaSimpleFila($sql);
 	}
 

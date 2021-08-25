@@ -57,5 +57,15 @@ $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):
 		$idtitulo= $_GET['idtit'];
 		$respuesta = $ctlcapitulo->ctlverificaarticulo($idcapitulo,$idley,$idtitulo);
 		echo json_encode($respuesta);
+	
+			//Mostrar registros
+	case 'recuperar':
+		$idleyM = $_REQUEST["idleypar"];
+		$idtituloM = $_REQUEST["idtitpar"];
+		$idcapituloM = $_REQUEST["idcappar"];
+		$respuesta = $ctlcapitulo->ctlmostrar($idcapituloM,$idleyM,$idtituloM);
+ 		//Codificar el resultado utilizando json
+ 		echo json_encode($respuesta);
+	break;
 }
 ?> 

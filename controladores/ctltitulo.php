@@ -50,8 +50,7 @@ class ctlTitulo {
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtitulo.')"><i class="fa fa-pencil"></i></button>'.
  					' <button class="btn btn-danger" onclick="verificacapitulo('.$reg->idtitulo.')"><i class="fa fa-trash"></i></button>'.
 					'<a target="_self" href="'.$url.$reg->idtitulo.$url2.$idley.'"> <button class="btn btn-success">Capitulos</button></a>',
-				"1"=>$reg->NOMLEY,
- 				"2"=>$reg->descripcion
+ 				"1"=>$reg->descripcion
  				);
  		}
  		$results = array(

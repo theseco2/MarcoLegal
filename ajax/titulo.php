@@ -58,5 +58,14 @@ $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):
 		echo json_encode($respuesta);
 
 	break;
+	
+		//Mostrar registros
+	case 'recuperar':
+		$idleyM = $_REQUEST["idleypar"];
+		$idtituloM = $_REQUEST["idtitpar"];
+		$respuesta = $ctltitulo->ctlmostrar($idtituloM,$idleyM);
+ 		//Codificar el resultado utilizando json
+ 		echo json_encode($respuesta);
+	break;
 }
 ?> 

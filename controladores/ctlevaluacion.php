@@ -75,13 +75,27 @@ class ctlEvaluacion {
  		//Vamos a declarar un array
  		$data= Array();
 
+ 		$idinstitucionint = (int)$idinstitucion;
+
  		while ($reg=$rspta->fetch_object()){
+ 			//Recupera la marca
+ 			$rspta1 = Evaluacion::comarca($idinstitucion,$idley,$idtitulo,$idcapitulo,$reg->idarticulo);
+
+ 			$prueba=$rspta1;
+ 			if ($prueba==1) {
+ 				$etiqueta='<span class="label bg-green">Completado</span>';
+ 			}elseif ($prueba==2) {
+ 				$etiqueta='<span class="label bg-yellow">Parcialmento Completado</span>';
+ 			}elseif ($prueba==3) {
+ 				$etiqueta='<span class="label bg-red">No Completado</span>';
+ 			}else $etiqueta='<span class="label bg-gray">No Evaluado</span>';
+ 			
  			$data[]=array(
- 				//"0"=>'<button class="btn btn-warning" onclick="mostrar('.$idinstitucion.','.$idley.','.$idtitulo.','.$idcapitulo.','.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>',
- 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>',
+ 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.','.$idinstitucionint.')"><i class="fa fa-pencil"></i></button>',
  				"1"=>$reg->numero,
  				"2"=>$reg->nombre,
- 				"3"=>$reg->descripcion
+ 				"3"=>$reg->descripcion,
+ 				"4"=>$etiqueta
  				);
  		}
  		$results = array(
@@ -95,6 +109,12 @@ class ctlEvaluacion {
 	//Mostrar******************************************************
 	static public function ctlmostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
 		return Evaluacion::mostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
+	}	
+	/**************************************************************/
+
+	//Mostrar******************************************************
+	static public function ctlmostrar2($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
+		return Evaluacion::mostrar2($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
 	}	
 	/**************************************************************/
 

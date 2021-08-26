@@ -11,17 +11,17 @@ Class Institucion
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($descripcion)
+	public function insertar($nombre)
 	{
-		$sql="INSERT INTO institucion (descripcion)
-		VALUES ('$descripcion')";
+		$sql="INSERT INTO institucion (nombre)
+		VALUES ('$nombre')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idinstitucion,$descripcion)
+	public function editar($idinstitucion,$nombre)
 	{
-		$sql="UPDATE institucion SET descripcion='$descripcion' WHERE idinstitucion = '$idinstitucion'";
+		$sql="UPDATE institucion SET nombre='$nombre' WHERE idinstitucion = '$idinstitucion'";
 		return ejecutarConsulta($sql);
 	}
 
@@ -50,16 +50,6 @@ Class Institucion
 	{
 		$sql="SELECT * FROM institucion";
 		return ejecutarConsulta($sql);		
-	}
-		/*========================================================
-	 METODO VERIFICA SI HAY REGISTROS EN TABLAS DEPENDIENTES
-	==========================================================*/
-	public function verificaevalua($idinstitucion)
-	{		
-		$sql=	"SELECT DISTINCT idinstitucion
-				FROM evaluacion
-				WHERE idinstitucion='$idinstitucion'";
-		return ejecutarConsultaSimpleFila($sql);
 	}
 }
 

@@ -58,9 +58,11 @@ Class Capitulo
 	=============================================*/
 	public function listar($idley,$idtitulo)
 	{
-		$sql=	"SELECT idcapitulo, descripcion
-				FROM capitulo 
-				WHERE idley='$idley' and idtitulo='$idtitulo'";
+		$sql=	"SELECT a.idcapitulo, b.descripcion as NOMLEY, c.descripcion as NOMTITULO, a.descripcion  as descripcionCAP
+				FROM capitulo a
+				INNER JOIN ley b ON a.idley = b.idley
+				INNER JOIN titulo c ON a.idtitulo = c.idtitulo
+				WHERE a.idley='$idley' and a.idtitulo='$idtitulo'";
 				
 		return ejecutarConsulta($sql);		
 	}

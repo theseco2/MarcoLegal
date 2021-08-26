@@ -7,12 +7,9 @@ function init(){
 	mostrarform(false);
 
 	recuperaley();
-	//recuperatitulo();
-	//recuperacapitulo();
 	$("#idley").change(recuperatitulo);
 	$("#idtitulo").change(recuperacapitulo);
 	$("#idcapitulo").change(listar);
-	//listar();
 
 	$("#formulario").on("submit",function(e)
 	{
@@ -25,10 +22,15 @@ function init(){
 =============================================*/
 function limpiar()
 {
-	//$("#idarticulo").val("");
-	//$("#numero").val("");
-	//$("#nombre").val("");
-	//$("#descripcion").val("");
+	$("#idevaluacion").val("");
+	$("#idarticulo").val("");
+	//$("#marca").val("");
+	$("#observacion").val("");
+	$("#descripcionIns").val("");
+	$("#descripcionLey").val("");
+	$("#descripcionTit").val("");
+	$("#descripcionCap").val("");
+	$("#descripcionArt").val("");
 }
 
 /*=============================================
@@ -72,6 +74,7 @@ function recuperaley()
 	.done(function(lista_ley){
 		$('#idley').html(lista_ley)
 		$('#idley').selectpicker('refresh');
+		recuperatitulo();
 	})
 	.fail(function(){
 		alert('Error al Cargar Leyes')
@@ -81,12 +84,7 @@ function recuperaley()
 // Recupera Titulo
 function recuperatitulo()
 {
-	//var idley = $("#idley").val();
-	//$('#idtitulo').change();				
-	//var idley = document.getElementById("idley").value;
 	var idley = document.getElementById("idley").value;
-	//idley = seidley.;
-	//alert(idley);
 
 	$.ajax({
 		type: 'POST',
@@ -95,6 +93,7 @@ function recuperatitulo()
 	.done(function(lista_titulo){
 		$('#idtitulo').html(lista_titulo)
 		$('#idtitulo').selectpicker('refresh');
+		recuperacapitulo();
 	})
 	.fail(function(){
 		alert('Error al Cargar Titulos')
@@ -115,6 +114,7 @@ function recuperacapitulo()
 	.done(function(lista_capitulo){
 		$('#idcapitulo').html(lista_capitulo)
 		$('#idcapitulo').selectpicker('refresh');
+		listar();
 	})
 	.fail(function(){
 		alert('Error al Cargar Capitulo')
@@ -124,6 +124,14 @@ function recuperacapitulo()
 //Función Listar_Articulos
 function listar()
 {
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idinstitucionpar = urlParams.get('idinstitucion');
+	/********************************************************/
+
 	var idley = document.getElementById("idley").value;
 	var idtitulo = document.getElementById("idtitulo").value;
 	var idcapitulo = document.getElementById("idcapitulo").value;
@@ -142,7 +150,7 @@ function listar()
 		"ajax":
 				{
 					url: '../../ajax/evaluacion.php?op=listar_articulos',
-					data:{idley:idley, idtitulo:idtitulo, idcapitulo:idcapitulo},
+					data:{idley:idley, idtitulo:idtitulo, idcapitulo:idcapitulo, idinstitucionpar:idinstitucionpar},
 					type : "get",
 					dataType : "json",						
 					error: function(e){
@@ -156,35 +164,56 @@ function listar()
 }
 
 //Muestra Informacion del Formulario
-function mostrar(idarticulo)
+function mostrar(idarticulo,idinstitucion)
 {
 	var idley = document.getElementById("idley").value;
 	var idtitulo = document.getElementById("idtitulo").value;
 	var idcapitulo = document.getElementById("idcapitulo").value;
+	var marca = document.getElementById("idcapitulo").value;
+	if (marca==0) {marca=1}
 
-	$.post("../../ajax/evaluacion.php?op=mostrar&idley="+idley,{idarticulo : idarticulo}, function(data, status)
+	$.post("../../ajax/evaluacion.php?op=mostrar&idley="+idley+'&idtitulo='+idtitulo+'&idcapitulo='+idcapitulo+'&idinstitucion='+idinstitucion,{idarticulo : idarticulo}, function(data, status)
 	{
 		data = JSON.parse(data);		
 		mostrarform(true);
-		$("#marca").val(data.marca);
-		//$("#observacion").val(data.observacion);
+		$("#observacion").val(data.observacion);
 		$("#descripcionIns").val(data.descripcionIns);
 		$("#descripcionLey").val(data.descripcionLey);
 		$("#descripcionTit").val(data.descripcionTit);
 		$("#descripcionCap").val(data.descripcionCap);
 		$("#descripcionArt").val(data.descripcionArt);
+		//Coloca los Id en pantalla
+		if (data.idevaluacion===undefined) {
+			data.idevaluacion=0;
+		}
+		$("#idevaluacion").val(data.idevaluacion);
+		$("#idarticulo").val(data.idarticulo);
+		$("#marca").val(data.marca);
+		$('#marca').selectpicker('refresh');
+
  	})
 }
 
 // Agregar o Editar Registros
 function guardaryeditar(e)
 {
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idinstitucionpar = urlParams.get('idinstitucion');
+	/********************************************************/
+	var idley = document.getElementById("idley").value;
+	var idtitulo = document.getElementById("idtitulo").value;
+	var idcapitulo = document.getElementById("idcapitulo").value;
+
 	e.preventDefault(); //No se activará la acción predeterminada del evento
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 
 	$.ajax({
-		url: "../../ajax/evaluacion.php?op=guardaryeditar",
+		url: "../../ajax/evaluacion.php?op=guardaryeditar&idley="+idley+'&idtitulo='+idtitulo+'&idcapitulo='+idcapitulo+'&idinstitucion='+idinstitucionpar,
 	    type: "POST",
 	    data: formData,
 	    contentType: false,

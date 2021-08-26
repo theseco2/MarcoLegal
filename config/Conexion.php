@@ -59,5 +59,13 @@ if (!function_exists('ejecutarConsulta'))
 		$query->execute();
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
+	function ejecutarConsultaMarca($sql)
+	{
+    	global $conexion;
+    	$query = $conexion->query($sql);
+    	$campo = $query->fetch_array();
+    	return $campo['marca'];
+	}
+
 }
 ?>

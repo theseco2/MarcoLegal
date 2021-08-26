@@ -18,7 +18,7 @@ function init(){
 =============================================*/
 function limpiar()
 {
-	$("#idinstitucion").val("");
+	$("#idley").val("");
 	$("#descripcion").val("");
 }
 
@@ -70,7 +70,7 @@ function listar()
 		        ],
 		"ajax":
 				{
-					url: '../../ajax/institucion.php?op=listar',
+					url: '../../ajax/ley.php?op=listar',
 					type : "get",
 					dataType : "json",						
 					error: function(e){
@@ -93,7 +93,7 @@ function guardaryeditar(e)
 	var formData = new FormData($("#formulario")[0]);
 
 	$.ajax({
-		url: "../../ajax/institucion.php?op=guardaryeditar",
+		url: "../../ajax/ley.php?op=guardaryeditar",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -113,27 +113,27 @@ function guardaryeditar(e)
 /*=============================================
 	 FUNCION MOSTRAR REGISTRO
 =============================================*/
-function mostrar(idinstitucion)
+function mostrar(idley)
 {
-	$.post("../../ajax/institucion.php?op=mostrar",{idinstitucion : idinstitucion}, function(data, status)
+	$.post("../../ajax/ley.php?op=mostrar",{idley : idley}, function(data, status)
 	{
 		data = JSON.parse(data);		
 		mostrarform(true);
 
 		$("#descripcion").val(data.descripcion);
- 		$("#idinstitucion").val(data.idinstitucion);
+ 		$("#idley").val(data.idley);
  	})
 }
 
 /*=============================================
 	 FUNCION ELIMINAR REGISTRO
 =============================================*/
-function eliminar(idinstitucion)
+function eliminar(idley)
 {
-	bootbox.confirm("Se eliminara la institucion. ¿Está seguro?", function(result){
+	bootbox.confirm("Se eliminara la ley. ¿Está seguro?", function(result){
 		if(result)
         {
-        	$.post("../../ajax/institucion.php?op=eliminar", {idinstitucion : idinstitucion}, function(e){
+        	$.post("../../ajax/ley.php?op=eliminar", {idley : idley}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	});	
@@ -142,18 +142,18 @@ function eliminar(idinstitucion)
 }
 
 /*=============================================
-	 FUNCION VALIDA institucion
+	 FUNCION VALIDA ley
 =============================================*/
-function verificaevalua(idinstitucion)
+function verificatitulo(idley)
 {
 	
-	$.post("../../ajax/institucion.php?op=verificaevalua",{idinstitucion : idinstitucion}, function(data, status) 
+	$.post("../../ajax/ley.php?op=verificatitulo",{idley : idley}, function(data, status) 
     {
     	data = JSON.parse(data);
 		
         if (data == null)
         {
-        	eliminar(idinstitucion);       
+        	eliminar(idley);       
         }
         else
         {

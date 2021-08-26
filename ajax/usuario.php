@@ -106,6 +106,7 @@ switch ($_GET["op"]){
 			in_array(2,$valores)?$_SESSION['seguridad']=1:$_SESSION['seguridad']=0;
 			in_array(3,$valores)?$_SESSION['evaluacion']=1:$_SESSION['evaluacion']=0;
 			in_array(4,$valores)?$_SESSION['consultas']=1:$_SESSION['consultas']=0;
+			in_array(5,$valores)?$_SESSION['grafica']=1:$_SESSION['grafica']=0;
 	    }
 	    echo json_encode($fetch);
 	break;

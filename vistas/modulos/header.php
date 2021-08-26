@@ -48,6 +48,26 @@ if (strlen(session_id()) < 1)
       }
     </style>
 
+    <!----------------------------------Para Carga de Archivos---------------------------------------->
+    <!-- Latest compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css'>-->
+    <style>
+        .navbar {
+          position: relative;
+          min-height: 50px;
+          margin-bottom: 5px;
+        }
+    </style>
+    <!------------------------------------------------------------------------------------------------>
+
   </head>
 
   <body class="hold-transition skin-blue-light sidebar-mini">
@@ -110,6 +130,23 @@ if (strlen(session_id()) < 1)
               </a>
             </li> -->
             <?php 
+            if ($_SESSION['grafica']==1)
+            {
+              echo '<li class="treeview">
+              <a href="#">
+                <i class="fa fa-bar-chart"></i>
+                <span>Graficas</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="ley.php"><i class="fa fa-circle-o"></i> Ley</a></li>
+                <li><a href="estado_audiencia.php"><i class="fa fa-circle-o"></i> Institución</a></li>
+              </ul>
+            </li>';
+            }
+            ?>
+
+            <?php 
             if ($_SESSION['administrar']==1)
             {
               echo '<li class="treeview">
@@ -120,7 +157,7 @@ if (strlen(session_id()) < 1)
               </a>
               <ul class="treeview-menu">
                 <li><a href="ley.php"><i class="fa fa-circle-o"></i> Ley</a></li>
-                <li><a href="institucion.php"><i class="fa fa-circle-o"></i> Institución</a></li>
+                <li><a href="estado_audiencia.php"><i class="fa fa-circle-o"></i> Institución</a></li>
               </ul>
             </li>';
             }

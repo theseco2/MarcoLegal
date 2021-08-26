@@ -1,21 +1,21 @@
 <?php
-require_once "../modelos/Institucion.php";
+require_once "../modelos/Ley.php";
 
 
-$institucion=new Institucion();
+$ley=new Ley();
 
-class ctlInstitucion {
+class ctlLey {
 
 	/*=============================================
 	 METODO GUARDAR O EDITAR
 	=============================================*/
-	static public function ctlguardareditar($idinstitucion, $descripcion){
+	static public function ctlguardareditar($idley, $descripcion){
 
-		if (empty($idinstitucion)){
-			return Institucion::insertar($descripcion);
+		if (empty($idley)){
+			return Ley::insertar($descripcion);
 		}
 		else {
-			return Institucion::editar($idinstitucion,$descripcion);
+			return Ley::editar($idley,$descripcion);
 		}
 
 	}
@@ -23,31 +23,32 @@ class ctlInstitucion {
 	/*=============================================
 	 METODO ELIMINAR
 	=============================================*/
-	static public function ctleliminar($idinstitucion){
-		return Institucion::eliminar($idinstitucion);
+	static public function ctleliminar($idley){
+		return Ley::eliminar($idley);
 	}
 	
 	/*=============================================
 	 METODO MOSTRAR
 	=============================================*/
-	static public function ctlmostrar($idinstitucion){
-		return Institucion::mostrar($idinstitucion);
+	static public function ctlmostrar($idley){
+		return Ley::mostrar($idley);
 	}	
 	
 	/*=============================================
 	 METODO LISTAR
 	=============================================*/
 	static public function ctllistar(){
-		$rspta = Institucion::listar();
+		$rspta = Ley::listar();
  		//Vamos a declarar un array
  		$data= Array();
 		
-		
+		$url='../modulos/titulo.php?idley=';
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idinstitucion.')"><i class="fa fa-pencil"></i></button>'.
- 					'<button class="btn btn-danger" onclick="verificaevalua('.$reg->idinstitucion.')"><i class="fa fa-trash"></i></button>',
+ 				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idley.')"><i class="fa fa-pencil"></i></button>'.
+ 					'<button class="btn btn-danger" onclick="verificatitulo('.$reg->idley.')"><i class="fa fa-trash"></i></button>'.
+					'<a target="_self" href="'.$url.$reg->idley.'"> <button class="btn btn-success">Titulos</button></a>',
  				"1"=>$reg->descripcion
  				);
  		}
@@ -63,8 +64,8 @@ class ctlInstitucion {
 	/*=============================================
 	 METODO MOSTRAR
 	=============================================*/
-	static public function ctlverificaevalua($idinstitucion){
-		return Institucion::verificaevalua($idinstitucion);
+	static public function ctlverificatitulo($idley){
+		return Ley::verificatitulo($idley);
 	}	
 }
 

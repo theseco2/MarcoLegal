@@ -23,7 +23,7 @@ if ($_SESSION['administrar']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Instituciones <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Leyes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -47,7 +47,7 @@ if ($_SESSION['administrar']==1)
                         <form name="formulario" id="formulario" method="POST">
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Descripción(*):</label>
-                            <input type="hidden" name="idinstitucion" id="idinstitucion">
+                            <input type="hidden" name="idley" id="idley">
                             <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="60" placeholder="Descripcion" required>
                           </div>
 						  
@@ -75,7 +75,7 @@ else
 
 require 'footer.php';
 ?>
-<script type="text/javascript" src="../scripts/institucion.js"></script>
+<script type="text/javascript" src="../scripts/ley.js"></script>
 <?php 
 }
 ob_end_flush();

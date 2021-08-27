@@ -157,7 +157,7 @@ if (strlen(session_id()) < 1)
               </a>
               <ul class="treeview-menu">
                 <li><a href="ley.php"><i class="fa fa-circle-o"></i> Ley</a></li>
-                <li><a href="estado_audiencia.php"><i class="fa fa-circle-o"></i> Institución</a></li>
+                <li><a href="institucion.php"><i class="fa fa-circle-o"></i> Institución</a></li>
               </ul>
             </li>';
             }

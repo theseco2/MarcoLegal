@@ -6,6 +6,7 @@ var tabla;
 function init(){
 	mostrarform(false);
 	listar();
+	mostrarley();
 
 	$("#formulario").on("submit",function(e)
 	{
@@ -172,6 +173,24 @@ function verificacapitulo(idtitulo)
     });
 }
 
+/*=============================================
+	 FUNCION MOSTRAR REGISTRO
+=============================================*/
+function mostrarley()
+{
+	var idleypar = getParameterByName('idley');
+	//bootbox.alert(idleypar);
+
+	$.post("../../ajax/ley.php?op=recuperar",{idleypar : idleypar}, function(data, status)
+	{
+
+		data = JSON.parse(data);		
+		//mostrarform(true);
+		$("#descripcionley").val(data.descripcion);
+ 		$("#idley").val(data.idley);
+
+ 	})
+}
 /*=============================================
 	 FUNCION Recupera parametro
 =============================================*/

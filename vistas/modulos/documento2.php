@@ -11,7 +11,7 @@ else
 {
 require 'header.php';
 
-if ($_SESSION['administrar']==1)
+if ($_SESSION['evaluacion']==1)
 {
 ?>
 <!--Contenido-->
@@ -23,38 +23,26 @@ if ($_SESSION['administrar']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-						<button class="btn btn-primary" id="btnretroceso" onclick="retornacap()"><i class="fa fa-arrow-circle-left"></i></button>
-						 <!--<a target="_self" href="../vistas/departamento.php?iddep=" + > <button class="btn btn-primary" id="btnretroceso"><i class="fa fa-arrow-circle-left"></i></button></a>-->
-                        <h1 class="box-title">Articulos <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+						<button class="btn btn-primary" id="btnretroceso" onclick="retornaeva()"><i class="fa fa-arrow-circle-left"></i></button>
+						 <!-- <a target="_self" href="../vistas/departamento.php?iddep=" + > <button class="btn btn-primary" id="btnretroceso"><i class="fa fa-arrow-circle-left"></i></button></a> -->
+                        <!-- <h1 class="box-title">Documentos <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1> -->
 						  
                         <div class="box-tools pull-right">
                         </div>
                     </div>
-					<div class="box-header with-border">
-					<label>Ley:</label>
-					<input type="text" class="form-control" name="descripcionley" id="descripcionley" maxlength="60" disabled>
-					<label>Titulo:</label>
-					<input type="text" class="form-control" name="descripciontitulo" id="descripciontitulo" maxlength="60" disabled>
-					<label>Capitulo:</label>
-					<input type="text" class="form-control" name="descripcioncapitulo" id="descripcioncapitulo" maxlength="60" disabled>
-					 </div>
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones</th>
-							<th>Numero</th>
-							<th>Nombre</th>
-							<th>Descripcion</th>
+							<th>Nombre del documento</th>
                           </thead>
                           <tbody>                            
                           </tbody>
                           <tfoot>
                             <th>Opciones</th>
-							<th>Numero</th>
-							<th>Nombre</th>
-							<th>Descripcion</th>                    
+		                    <th>Nombre del documento</th>
                           </tfoot>
                         </table>
                     </div>
@@ -62,20 +50,10 @@ if ($_SESSION['administrar']==1)
                         <form name="formulario" id="formulario" method="POST">
                           
 						  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">                      
-							<label>Numero(*):</label>
-                             <!-- <input type="hidden" name="idregion" id="idregion">-->
-							<input type="hidden" name="idarticulo" id="idarticulo">
-                            <input type="number" class="form-control" name="numero" id="numero" maxlength="9" placeholder="Numero" required>
-							</div>
-							
-							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">								
 							<label>Nombre(*):</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="60" placeholder="Nombre" required>
-							</div>
-							
-							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<label>Descripción(*):</label>
-                            <input type="textarea" rows="10" cols="40" class="form-control" name="descripcion" id="descripcion" maxlength="500" placeholder="Descripcion" required>
+                             <!-- <input type="hidden" name="idregion" id="idregion">-->
+							<input type="hidden" name="iddocumento" id="iddocumento">
+                            <input type="number" class="form-control" name="numero" id="numero" maxlength="9" placeholder="Numero" required>
 							</div>
 						  
 							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -102,7 +80,7 @@ else
 
 require 'footer.php';
 ?>
-<script type="text/javascript" src="../scripts/articulo.js"></script>
+<script type="text/javascript" src="../scripts/documento2.js"></script>
 <?php 
 }
 ob_end_flush();

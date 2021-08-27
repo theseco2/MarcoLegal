@@ -7,6 +7,8 @@ function init(){
 	
 	mostrarform(false);
 	listar();
+	mostrarley();
+	mostrartitulo();
 
 	$("#formulario").on("submit",function(e)
 	{
@@ -200,7 +202,43 @@ function retornatit()
 	
 }
 
+/*=============================================
+	 FUNCION MOSTRAR REGISTRO
+=============================================*/
+function mostrarley()
+{
+	var idleypar = getParameterByName('idley');
 
+	$.post("../../ajax/ley.php?op=recuperar",{idleypar : idleypar}, function(data, status)
+	{
+
+		data = JSON.parse(data);		
+		//mostrarform(true);
+		$("#descripcionley").val(data.descripcion);
+ 		//$("#idley").val(data.idley);
+
+ 	})
+}
+
+
+/*=============================================
+	 FUNCION MOSTRAR REGISTRO
+=============================================*/
+function mostrartitulo()
+{
+	var idleypar = getParameterByName('idley');
+	var idtitpar = getParameterByName('idtit');
+
+	$.post('../../ajax/titulo.php?op=recuperar&idleypar='+idleypar,{idtitpar : idtitpar}, function(data, status)
+	{
+
+		data = JSON.parse(data);		
+		//mostrarform(true);
+		$("#descripciontitulo").val(data.descripcion);
+ 		//$("#idley").val(data.idley);
+
+ 	})
+}
 
 /*=============================================
 	 FUNCION Recupera parametro

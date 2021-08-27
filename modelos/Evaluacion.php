@@ -64,11 +64,35 @@ Class Evaluacion
 	//Trae Marca
 	public function comarca($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
 	{
+		$campo = 'marca';
 		$sql="SELECT marca
 			  FROM evaluacion 
 			  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
 			  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
-		return ejecutarConsultaMarca($sql);
+		return ejecutarConsultaCampo($campo,$sql);
+		//return ejecutarConsultaSimpleFila($sql);
+	}
+
+	//Trae Marca
+	public function coobservacion($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
+	{
+		$campo = 'observacion';
+		$sql="SELECT observacion
+			  FROM evaluacion 
+			  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
+			  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
+		return ejecutarConsultaCampo($campo,$sql);
+		//return ejecutarConsultaSimpleFila($sql);
+	}
+
+	//Descripcion de Institucion
+	public function desinstitucion($idinstitucion)
+	{
+		$campo = 'descripcion';
+		$sql="SELECT descripcion
+			  FROM institucion
+			  WHERE idinstitucion='$idinstitucion'";
+		return ejecutarConsultaSimpleFila($sql);
 		//return ejecutarConsultaSimpleFila($sql);
 	}
 	

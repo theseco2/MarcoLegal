@@ -22,6 +22,7 @@ if ($_SESSION['evaluacion']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
+                      <button class="btn btn-primary" id="btnretroceso" onclick="retornaint()"><i class="fa fa-arrow-circle-left"></i></button>
                         <h1 class="box-title">Evaluacion de Leyes <button class="btn btn-success" id="btnagregar" onclick=""><i class="fa fa-plus-circle"></i> Ingresar Documentos</button></h1>
                         <div class="box-tools pull-right">
                         </div>
@@ -30,6 +31,10 @@ if ($_SESSION['evaluacion']==1)
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">
                         <input type="hidden" name="idinstitucionG" id="idinstitucionG">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <label id="">Institución:</label>
+                          <input type="text" class="form-control" name="descripcionIns" id="descripcionIns" maxlength="60" disabled>
+                        </div>
                         <div class="form-inline col-lg-4 col-md-4 col-sm-6 col-xs-12">
                           <label>Ley</label>
                           <select name="idley" id="idley" class="form-control selectpicker" data-live-search="true" required>
@@ -45,7 +50,7 @@ if ($_SESSION['evaluacion']==1)
                           <select name="idcapitulo" id="idcapitulo" class="form-control selectpicker" data-live-search="true" required>
                           </select>
                         </div>
-                        <br><br><br><br>
+                        <br><br><br><br><br><br><br><br>
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opcion</th>

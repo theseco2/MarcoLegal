@@ -5,7 +5,6 @@ var tabla;
 =============================================*/
 function init(){
 	mostrarform(false);
-
 	recuperaley();
 	$("#idley").change(recuperatitulo);
 	$("#idtitulo").change(recuperacapitulo);
@@ -26,7 +25,7 @@ function limpiar()
 	$("#idarticulo").val("");
 	//$("#marca").val("");
 	$("#observacion").val("");
-	$("#descripcionIns").val("");
+	//$("#descripcionIns").val("");
 	$("#descripcionLey").val("");
 	$("#descripcionTit").val("");
 	$("#descripcionCap").val("");
@@ -44,13 +43,13 @@ function mostrarform(flag)
 		$("#listadoregistros").hide();
 		$("#formularioregistros").show();
 		$("#btnGuardar").prop("disabled",false);
-		//$("#btnagregar").hide();
+		$("#btnagregar").hide();
 	}
 	else
 	{
 		$("#listadoregistros").show();
 		$("#formularioregistros").hide();
-		//$("#btnagregar").show();
+		$("#btnagregar").show();
 	}
 }
 
@@ -131,7 +130,8 @@ function listar()
 	//Accedemos a los valores
 	var idinstitucionpar = urlParams.get('idinstitucion');
 	/********************************************************/
-
+	//alert('porque ni Muestra '+idinstitucionpar);
+	recuperadesinstitucion(idinstitucionpar);
 	var idley = document.getElementById("idley").value;
 	var idtitulo = document.getElementById("idtitulo").value;
 	var idcapitulo = document.getElementById("idcapitulo").value;
@@ -229,5 +229,24 @@ function guardaryeditar(e)
 	});
 	limpiar();
 }
+
+function recuperadesinstitucion(idinstitucionpar){
+	//alert(' Muestra '+idinstitucionpar);
+    $.post('../../ajax/evaluacion.php?op=desinstitucion&idinstitucion='+idinstitucionpar, function(data, status)
+	{
+		data = JSON.parse(data);
+		$("#descripcionIns").val(data.descripcion);
+
+ 	})
+}
+
+/*=============================================
+	 FUNCION retorna a titulo
+=============================================*/
+function retornaint()
+{	
+	location.href = "../modulos/evaluacion.php";	
+}
+
 
 init();

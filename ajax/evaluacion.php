@@ -83,12 +83,12 @@ $observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):
 		$idtituloM = $_REQUEST["idtitulo"];
 		$idcapituloM = $_REQUEST["idcapitulo"];
 		$idinstitucionM = $_REQUEST["idinstitucionpar"];
-
-		/*$idleyM = 1;
+/*
+		$idleyM = 1;
 		$idtituloM = 1;
 		$idcapituloM = 1;
-		$idinstitucionM = 1;*/
-
+		$idinstitucionM = 1;
+*/	
 		$rspta=$ctlevaluacion->ctllistar_articulos($idinstitucionM,$idleyM,$idtituloM,$idcapituloM);
  		echo json_encode($rspta);
 
@@ -111,5 +111,12 @@ $observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):
  		echo json_encode($rspta);
 	break;
 	
+	case 'desinstitucion':
+
+		$idinstitucionM = $_GET['idinstitucion'];
+
+		$rspta=$ctlevaluacion->ctldesintitucion($idinstitucionM);
+ 		echo json_encode($rspta);
+	break;
 }
 ?> 

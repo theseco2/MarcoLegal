@@ -174,7 +174,7 @@ if (strlen(session_id()) < 1)
               </a>
               <ul class="treeview-menu">
                 <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
-                <li><a href="cargo.php"><i class="fa fa-circle-o"></i> Rol</a></li>
+                <li><a href="rol.php"><i class="fa fa-circle-o"></i> Rol</a></li>
                 <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
               </ul>
             </li>';
@@ -196,14 +196,10 @@ if (strlen(session_id()) < 1)
             if ($_SESSION['consultas']==1)
             {
               echo '<li>
-              <a href="#">
+              <a href="ConsultaEvaluacion.php">
                 <i class="fa fa-folder"></i>
                 <span>Consultas</span>
-                 <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="consulta_expediente.php"><i class="fa fa-circle-o"></i> Consulta</a></li>
-              </ul>
             </li>';
             }
             ?>

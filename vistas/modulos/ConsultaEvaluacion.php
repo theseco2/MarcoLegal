@@ -11,7 +11,7 @@ else
 {
 require 'header.php';
 
-if ($_SESSION['evaluacion']==1)
+if ($_SESSION['consultas']==1)
 {
 ?>
 <!--Contenido-->
@@ -23,7 +23,7 @@ if ($_SESSION['evaluacion']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                        <h1 class="box-title">Evaluacion - Selección de Institución </h1>
+                        <h1 class="box-title">Consulta - Selección de Institución </h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -60,7 +60,7 @@ else
 
 require 'footer.php';
 ?>
-<script type="text/javascript" src="../scripts/evaluacion.js"></script>
+<script type="text/javascript" src="../scripts/consulta.js"></script>
 <?php 
 }
 ob_end_flush();

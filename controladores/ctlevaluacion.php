@@ -89,7 +89,7 @@ class ctlEvaluacion {
  			}elseif ($prueba==3) {
  				$etiqueta='<span class="label bg-red">No Completado</span>';
  			}else $etiqueta='<span class="label bg-gray">No Evaluado</span>';
- 			
+
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.','.$idinstitucionint.')"><i class="fa fa-pencil"></i></button>',
  				"1"=>$reg->numero,
@@ -115,6 +115,12 @@ class ctlEvaluacion {
 	//Mostrar******************************************************
 	static public function ctlmostrar2($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo){
 		return Evaluacion::mostrar2($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo);
+	}	
+	/**************************************************************/
+
+	//Traer descripcion de Institucion*****************************
+	static public function ctldesintitucion($idinstitucion){
+		return Evaluacion::desinstitucion($idinstitucion);
 	}	
 	/**************************************************************/
 

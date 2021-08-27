@@ -59,12 +59,12 @@ if (!function_exists('ejecutarConsulta'))
 		$query->execute();
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
-	function ejecutarConsultaMarca($sql)
+	function ejecutarConsultaCampo($campo1,$sql)
 	{
     	global $conexion;
     	$query = $conexion->query($sql);
     	$campo = $query->fetch_array();
-    	return $campo['marca'];
+    	return $campo[$campo1];
 	}
 
 }

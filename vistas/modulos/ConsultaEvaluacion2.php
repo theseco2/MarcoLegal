@@ -23,7 +23,7 @@ if ($_SESSION['consultas']==1)
                   <div class="box">
                     <div class="box-header with-border">
                       <button class="btn btn-primary" id="btnretroceso" onclick="retornains()"><i class="fa fa-arrow-circle-left"></i></button>
-                        <h1 class="box-title">Consulta - Evaluacion de Leyes <button class="btn btn-success" id="btnagregar" onclick=""><i class="fa fa-plus-circle"></i> Ingresar Documentos</button></h1>
+                        <h1 class="box-title">Consulta - Evaluacion de Leyes</h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>

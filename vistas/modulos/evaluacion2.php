@@ -23,7 +23,7 @@ if ($_SESSION['evaluacion']==1)
                   <div class="box">
                     <div class="box-header with-border">
                       <button class="btn btn-primary" id="btnretroceso" onclick="retornaint()"><i class="fa fa-arrow-circle-left"></i></button>
-                        <h1 class="box-title">Evaluacion de Leyes <button class="btn btn-success" id="btnagregar" onclick=""><i class="fa fa-plus-circle"></i> Ingresar Documentos</button></h1>
+                        <h1 class="box-title">Evaluacion de Leyes</h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -71,31 +71,39 @@ if ($_SESSION['evaluacion']==1)
                         </table>
                     </div>
                     <div class="panel-body" id="formularioregistros">
-                        <form name="formulario" id="formulario" method="POST">
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <form name="formulario" id="formulario" method="POST" enctype="multipart/form-data">
+                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label id="">Institución:</label>
                             <input type="hidden" name="idinstitucion" id="idinstitucion">
-                            <input type="text" class="form-control" name="descripcionIns" id="descripcionIns" maxlength="60" disabled>
+                            <input type="text" class="form-control" name="descripcionIns2" id="descripcionIns2" maxlength="60" disabled>
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Ley:</label>
                             <input type="hidden" name="idley" id="idley">
                             <input type="text" class="form-control" name="descripcionLey" id="descripcionLey" maxlength="60" disabled>
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Titulo:</label>
                             <input type="hidden" name="idtitulo" id="idtitulo">
                             <input type="text" class="form-control" name="descripcionTit" id="descripcionTit" maxlength="60" disabled>
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Capitulo:</label>
                             <input type="hidden" name="idcapitulo" id="idcapitulo">
                             <input type="text" class="form-control" name="descripcionCap" id="descripcionCap" maxlength="60" disabled>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Articulo:</label>
+                            <label>Numero Articulo:</label>
                             <input type="hidden" name="idarticulo" id="idarticulo">
+                            <input type="text" class="form-control" name="numero" id="numero" maxlength="10" disabled>
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Articulo:</label>
                             <input type="text" class="form-control" name="descripcionArt" id="descripcionArt" maxlength="60" disabled>
+                          </div>
+                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Descripcion Articulo:</label>
+                            <textarea id="descripcionArtD" name="descripcionArtD" rows="2" class="form-control" disabled></textarea>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Estatus(*):</label>
@@ -107,9 +115,69 @@ if ($_SESSION['evaluacion']==1)
                             </select>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label></label>
+                          </div>
+                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label>Observación:</label>
-                            <!--<input type="text" class="form-control" name="observacion" id="observacion" maxlength="300" placeholder="Observación">-->
                             <textarea id="observacion" name="observacion" rows="3" class="form-control"></textarea>
+                          </div>
+                          <!-- Para Ingresar los archivos --------------------------------------------------------->  
+                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">Archivos</h3>
+                            </div>
+                            <div class="panel-body">
+                              <!-- Primer Archivo-->
+                              <div class="col-lg-4">
+                                <div class="form-group" id="SeleccionArchivo">
+                                  <label class="btn btn-primary" for="my-file-selector">
+                                    <input type="file" name="file" id="exampleInputFile">
+                                  </label>    
+                                </div>
+                                <div class="form-group" id="EliminaArchivo">
+                                  <label class="btn btn-primary">
+                                    <input type="text" class="form-control" name="nombrearch" id="nombrearch" maxlength="10" disabled>
+                                  </label> 
+                                  <br>
+                                  <button class="btn btn-danger" type="button" onclick="cambiaformu()">Eliminar Fichero</button>   
+                                </div>
+                              </div>
+                              <!-- ---------------->
+                              <!-- Segundo Archivo-->
+                              <div class="col-lg-4">
+                                <div class="form-group" id="SeleccionArchivo2">
+                                  <label class="btn btn-primary" for="my-file-selector">
+                                    <input type="file" name="file2" id="exampleInputFile2">
+                                  </label>    
+                                </div>
+                                <div class="form-group" id="EliminaArchivo2">
+                                  <label class="btn btn-primary">
+                                    <input type="text" class="form-control" name="nombrearch2" id="nombrearch2" maxlength="10" disabled>
+                                  </label> 
+                                  <br>
+                                  <button class="btn btn-danger" type="button" onclick="cambiaformu2()">Eliminar Fichero</button>   
+                                </div>
+                              </div>
+                              <!-- ---------------->
+                              <!-- Tercer Archivo-->
+                              <div class="col-lg-4">
+                                <div class="form-group" id="SeleccionArchivo3">
+                                  <label class="btn btn-primary" for="my-file-selector">
+                                    <input type="file" name="file3" id="exampleInputFile3">
+                                  </label>    
+                                </div>
+                                <div class="form-group" id="EliminaArchivo3">
+                                  <label class="btn btn-primary">
+                                    <input type="text" class="form-control" name="nombrearch3" id="nombrearch3" maxlength="10" disabled>
+                                  </label> 
+                                  <br>
+                                  <button class="btn btn-danger" type="button" onclick="cambiaformu3()">Eliminar Fichero</button>   
+                                </div>
+                              </div>
+                              <!-- ---------------->
+                              <!---------------------------------------------------------------------------------------->
+                          <div class="col-lg-6"> </div>
+                          </div>
                           </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>

@@ -13,18 +13,18 @@ Class Evaluacion
 	}
 
 	//Inserta Evaluacion
-	public function insertar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion)
+	public function insertar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion,$file,$file2,$file3)
 	{
-		$sql=	"INSERT INTO evaluacion (idusuario,idinstitucion,idley,idtitulo,idcapitulo,idarticulo,marca,observacion)
-				VALUES(1,'$idinstitucion','$idley','$idtitulo','$idcapitulo','$idarticulo','$marca','$observacion')";
+		$sql=	"INSERT INTO evaluacion (idusuario,idinstitucion,idley,idtitulo,idcapitulo,idarticulo,marca,observacion,nombredocumento1,nombredocumento2,nombredocumento3)
+				VALUES(1,'$idinstitucion','$idley','$idtitulo','$idcapitulo','$idarticulo','$marca','$observacion','$file','$file2','$file3')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Actualiza Evaluacion
-	public function editar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion)
+	public function editar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion,$file,$file2,$file3)
 	{
 		$sql=	"UPDATE evaluacion
-				SET marca='$marca', observacion='$observacion'
+				SET marca='$marca', observacion='$observacion',nombredocumento1='$file',nombredocumento2='$file2',nombredocumento3='$file3'
 				WHERE idevaluacion='$idevaluacion'";
 		return ejecutarConsulta($sql);
 	}
@@ -32,9 +32,10 @@ Class Evaluacion
 	//Implementar un método para mostrar los datos de un registro a modificar
 	public function mostrar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
 	{
-		$sql="SELECT e.idevaluacion,e.idarticulo, e.marca,e.observacion, i.descripcion AS descripcionIns, l.descripcion AS descripcionLey, 
+		$sql="SELECT e.idevaluacion,e.idarticulo, e.marca,e.observacion, i.descripcion AS descripcionIns, l.descripcion AS descripcionLey,  
 			         t.descripcion AS descripcionTit, c.descripcion AS descripcionCap,
-			         a.nombre AS descripcionArt 
+			         a.nombre AS descripcionArt, a.numero, a.descripcion AS descripcionArtD, e.nombredocumento1,
+			         e.nombredocumento2, e.nombredocumento3
 			  FROM evaluacion e 
 			  INNER JOIN institucion i ON e.idinstitucion = i.idinstitucion
 			  INNER JOIN ley l ON e.idley = l.idley
@@ -51,7 +52,7 @@ Class Evaluacion
 	{
 		$sql="SELECT a.idarticulo, l.descripcion AS descripcionLey, 
 		 		     t.descripcion AS descripcionTit, c.descripcion AS descripcionCap,
-		     		 a.nombre AS descripcionArt
+		     		 a.nombre AS descripcionArt,a.numero, a.descripcion AS descripcionArtD
 			  FROM articulo a
 			  INNER JOIN ley l ON a.idley = l.idley
 			  INNER JOIN titulo t ON a.idtitulo = t.idtitulo
@@ -70,7 +71,6 @@ Class Evaluacion
 			  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
 			  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
 		return ejecutarConsultaCampo($campo,$sql);
-		//return ejecutarConsultaSimpleFila($sql);
 	}
 
 	//Trae Marca
@@ -82,7 +82,6 @@ Class Evaluacion
 			  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
 			  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
 		return ejecutarConsultaCampo($campo,$sql);
-		//return ejecutarConsultaSimpleFila($sql);
 	}
 
 	//Descripcion de Institucion
@@ -93,7 +92,6 @@ Class Evaluacion
 			  FROM institucion
 			  WHERE idinstitucion='$idinstitucion'";
 		return ejecutarConsultaSimpleFila($sql);
-		//return ejecutarConsultaSimpleFila($sql);
 	}
 	
 }

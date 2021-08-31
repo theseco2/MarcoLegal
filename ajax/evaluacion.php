@@ -22,8 +22,11 @@ $observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):
 		$idtituloM = $_GET['idtitulo'];
 		$idcapituloM = $_GET['idcapitulo'];
 		$idinstitucionM = $_GET['idinstitucion'];
+		$file = $_GET['file'];
+		$file2 = $_GET['file2'];
+		$file3 = $_GET['file3'];
 
-		$respuesta = $ctlevaluacion->ctlguardareditar($idevaluacion,$idinstitucionM ,$idleyM,$idtituloM,$idcapituloM,$idarticulo,$marca,$observacion);
+		$respuesta = $ctlevaluacion->ctlguardareditar($idevaluacion,$idinstitucionM ,$idleyM,$idtituloM,$idcapituloM,$idarticulo,$marca,$observacion,$file,$file2,$file3);
 		if (empty($idevaluacion)){
 			echo $respuesta ? "Evaluacion ingresada exitosamente" : "Evaluacion no se pudo ingresar";
 		}
@@ -118,5 +121,33 @@ $observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):
 		$rspta=$ctlevaluacion->ctldesintitucion($idinstitucionM);
  		echo json_encode($rspta);
 	break;
+
+	case 'cargaarchivo':
+		$nombre = 'prueba';
+		// Cómo subir el archivo
+		$fichero = $_FILES["file"];
+		$fichero2 = $_FILES["file2"];
+		$fichero3 = $_FILES["file3"];
+
+		$nombrefile = $_GET['filen'];
+		$nombrefile2 = $_GET['filen2'];
+		$nombrefile3 = $_GET['filen3'];
+
+		// Cargando el fichero en la carpeta "subidas"
+		move_uploaded_file($fichero["tmp_name"], "../vistas/documentos/subidas/".$nombrefile);
+		move_uploaded_file($fichero2["tmp_name"], "../vistas/documentos/subidas/".$nombrefile2);
+		move_uploaded_file($fichero3["tmp_name"], "../vistas/documentos/subidas/".$nombrefile3);
+		// Redirigiendo hacia atrás
+		header("Location: " . $_SERVER["HTTP_REFERER"]);
+	break;
+
+	case 'eliminaarchivo':
+		// Usamos el comando "unlink" para borrar el fichero
+		unlink($_GET['name']);
+
+		// Redirigiendo hacia atrás	
+		header("Location: " . $_SERVER["HTTP_REFERER"]);
+	break;
+
 }
 ?> 

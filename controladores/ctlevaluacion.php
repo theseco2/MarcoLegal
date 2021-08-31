@@ -9,13 +9,13 @@ class ctlEvaluacion {
 	/*=============================================
 	 METODO GUARDAR O EDITAR
 	=============================================*/
-	static public function ctlguardareditar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion){
+	static public function ctlguardareditar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion,$file,$file2,$file3){
 
 		if (empty($idevaluacion)){
-			return Evaluacion::insertar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion);
+			return Evaluacion::insertar($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion,$file,$file2,$file3);
 		}
 		else {
-			return Evaluacion::editar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion);
+			return Evaluacion::editar($idevaluacion,$idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo,$marca,$observacion,$file,$file2,$file3);
 		}
 
 	}

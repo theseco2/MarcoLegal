@@ -42,14 +42,14 @@ class ctlTitulo {
  		//Vamos a declarar un array
  		$data= Array();
 		
-		$url='../modulos/capitulo.php?idtit=';
-		$url2='?idley=';
+		$url='../modulos/capitulo.php?idley=';
+		$url2='?idtit=';
 		
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idtitulo.')"><i class="fa fa-pencil"></i></button>'.
  					' <button class="btn btn-danger" onclick="verificacapitulo('.$reg->idtitulo.')"><i class="fa fa-trash"></i></button>'.
-					'<a target="_self" href="'.$url.$reg->idtitulo.$url2.$idley.'"> <button class="btn btn-success">Capitulos</button></a>',
+					'<a target="_self" href="'.$url.$idley.$url2.$reg->idtitulo.'"> <button class="btn btn-success">Capitulos</button></a>',
 				"1"=>$reg->descripcion
  				);
  		}

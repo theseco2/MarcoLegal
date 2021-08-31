@@ -30,6 +30,17 @@ if ($_SESSION['evaluacion']==1)
                         <div class="box-tools pull-right">
                         </div>
                     </div>
+					
+					<div class="box-header with-border">
+					<label>Institucion:</label>
+					<input type="text" class="form-control" name="descripcioninstitucion" id="descripcioninstitucion" maxlength="60" disabled>
+					<label>Ley:</label>
+					<input type="text" class="form-control" name="descripcionley" id="descripcionley" maxlength="60" disabled>
+					<label>Titulo:</label>
+					<input type="text" class="form-control" name="descripciontitulo" id="descripciontitulo" maxlength="60" disabled>
+					<label>Capitulo:</label>
+					<input type="text" class="form-control" name="descripcioncapitulo" id="descripcioncapitulo" maxlength="60" disabled>
+					 </div>
                     <!-- /.box-header -->
                     <!-- centro -->
                     <div class="panel-body table-responsive" id="listadoregistros">

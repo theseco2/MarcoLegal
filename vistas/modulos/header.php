@@ -139,7 +139,7 @@ if (strlen(session_id()) < 1)
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ley.php"><i class="fa fa-circle-o"></i> Ley</a></li>
+                <li><a href="grafica1.php"><i class="fa fa-circle-o"></i> Graficas</a></li>
                 <li><a href="estado_audiencia.php"><i class="fa fa-circle-o"></i> Institución</a></li>
               </ul>
             </li>';

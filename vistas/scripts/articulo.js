@@ -205,9 +205,10 @@ function retornacap()
 {
 	
 	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
+	//var idtitpar = getParameterByName('idtit');
 	
-	location.href = "../modulos/capitulo.php?idley="+idleypar+'&idtit='+idtitpar;
+	
+	location.href = '../modulos/capitulo.php?idley='+idleypar;
 	
 }
 

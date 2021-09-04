@@ -60,5 +60,16 @@ $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):
  		//Codificar el resultado utilizando json
  		echo json_encode($respuesta);
 	break;
+	
+	case 'selectInstitucion':
+
+		$rspta = $ctlinstitucion->ctlselectinstitucion();
+
+		while ($reg = $rspta->fetch_object())
+			{
+				echo '<option value="'.$reg->idinstitucion.'">'.$reg->descripcion.'</option>';	
+			}
+
+	break;	
 }
 ?> 

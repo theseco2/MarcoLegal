@@ -66,6 +66,12 @@ class ctlInstitucion {
 	static public function ctlverificaevalua($idinstitucion){
 		return Institucion::verificaevalua($idinstitucion);
 	}	
+	
+		//Seleccion de Instituciones*************************************************************
+	static public function ctlselectinstitucion(){
+		
+ 		return Institucion::select();
+	}
 }
 
 ?>

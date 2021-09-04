@@ -93,6 +93,45 @@ Class Evaluacion
 			  WHERE idinstitucion='$idinstitucion'";
 		return ejecutarConsultaSimpleFila($sql);
 	}
+
+	/*=============================================
+	 Recupera Documento 1
+	=============================================*/
+	public function documento1($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
+	{
+		$campo = 'nombredocumento1';
+			$sql="SELECT nombredocumento1
+				  FROM evaluacion 
+				  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
+				  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
+		return ejecutarConsultaCampo($campo,$sql);		
+	}
+
+	/*=============================================
+	 Recupera Documento 2
+	=============================================*/
+	public function documento2($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
+	{
+		$campo = 'nombredocumento2';
+		$sql="SELECT nombredocumento2
+			  FROM evaluacion 
+			  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
+			  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
+		return ejecutarConsultaCampo($campo,$sql);		
+	}
+
+	/*=============================================
+	 Recupera Documento 3
+	=============================================*/
+	public function documento3($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
+	{
+		$campo = 'nombredocumento3';
+		$sql="SELECT nombredocumento3
+			  FROM evaluacion 
+			  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
+			  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
+		return ejecutarConsultaCampo($campo,$sql);		
+	}
 	
 }
 

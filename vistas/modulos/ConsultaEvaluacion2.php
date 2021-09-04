@@ -57,6 +57,7 @@ if ($_SESSION['consultas']==1)
                             <th>Nombre</th>
                             <th>Observacion</th> 
                             <th>Estatus</th>
+                            <th>Documentos</th>
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -65,6 +66,7 @@ if ($_SESSION['consultas']==1)
                             <th>Nombre</th>
                             <th>Observacion</th> 
                             <th>Estatus</th>
+                            <th>Documentos</th>
                           </tfoot>
                         </table>
                     </div>

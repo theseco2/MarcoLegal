@@ -104,7 +104,7 @@ var ctx = document.getElementById("estatusxeva").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [<?php echo $stat; ?>],
+        labels: [<?php echo $stat;?>],
         datasets: [{
             label: 'Estatus de Evaluación',
             data: [<?php echo $cantidad; ?>],

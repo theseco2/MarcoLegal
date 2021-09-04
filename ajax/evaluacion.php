@@ -123,7 +123,6 @@ $observacion=isset($_POST["observacion"])? limpiarCadena($_POST["observacion"]):
 	break;
 
 	case 'cargaarchivo':
-		$nombre = 'prueba';
 		// Cómo subir el archivo
 		$fichero = $_FILES["file"];
 		$fichero2 = $_FILES["file2"];

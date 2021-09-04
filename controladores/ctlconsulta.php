@@ -58,11 +58,25 @@ class ctlConsulta {
  			//Recupera la observacion
  			$observacion = Evaluacion::coobservacion($idinstitucion,$idley,$idtitulo,$idcapitulo,$reg->idarticulo);
 
+
+ 			//////Recuper Documentos//////////////////////////////////////////////////////////////////////////////
+ 			//require_once "../modelos/Consultas.php";
+ 			$docume1 = Evaluacion::documento1($idinstitucion,$idley,$idtitulo,$idcapitulo,$reg->idarticulo);
+ 			$docume2 = Evaluacion::documento2($idinstitucion,$idley,$idtitulo,$idcapitulo,$reg->idarticulo);
+ 			$docume3 = Evaluacion::documento3($idinstitucion,$idley,$idtitulo,$idcapitulo,$reg->idarticulo);
+ 			$catdoc1=''; $catdoc2=''; $catdoc3=''; 
+ 			if ($docume1!=''&&$docume1!=null) {$catdoc1='<a title="'.$docume1.'" href="../documentos/subidas/'.$docume1.'" download="'.$docume1.'" style="color: blue; font-size:18px;"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> </a>';}
+ 			if ($docume2!=''&&$docume2!=null) {$catdoc2='<a title="'.$docume2.'" href="../documentos/subidas/'.$docume2.'" download="'.$docume2.'" style="color: blue; font-size:18px;"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> </a>';}
+ 			if ($docume3!=''&&$docume3!=null) {$catdoc3='<a title="'.$docume3.'" href="../documentos/subidas/'.$docume3.'" download="'.$docume3.'" style="color: blue; font-size:18px;"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> </a>';}
+ 			$catdoc = $catdoc1.$catdoc2.$catdoc3;
+ 			//////////////////////////////////////////////////////////////////////////////////////////////////////
+
  			$data[]=array(
  				"0"=>$reg->numero,
  				"1"=>$reg->nombre,
  				"2"=>$observacion,
- 				"3"=>$etiqueta
+ 				"3"=>$etiqueta,
+ 				"4"=>$catdoc
  				);
  		}
  		$results = array(

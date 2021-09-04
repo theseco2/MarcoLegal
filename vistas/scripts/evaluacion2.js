@@ -1,4 +1,7 @@
 var tabla;
+var graba1;
+var graba2;
+var graba3;
 
 /*=============================================
 	 FUNCION INICIAL DE CARGA
@@ -34,7 +37,18 @@ function limpiar()
 	$("#descripcionTit").val("");
 	$("#descripcionCap").val("");
 	$("#descripcionArt").val("");
-	//$("#exampleInputFile").val("");
+	$("#exampleInputFile").val("");
+	$("#exampleInputFile2").val("");
+	$("#exampleInputFile3").val("");
+	$("#nombrearch").val("");
+	$("#nombrearch2").val("");
+	$("#nombrearch3").val("");
+	graba1 = ' ';
+	graba2 = ' ';
+	graba3 = ' ';
+	fileI  = ' ';
+	fileI2 = ' ';
+	fileI3 = ' ';
 }
 
 /*=============================================
@@ -177,6 +191,9 @@ function mostrar(idarticulo,idinstitucion)
 	var desinstitu = document.getElementById("descripcionIns").value;
 	if (marca==0) {marca=1}
 
+	//$("#exampleInputFile").val("");
+	//$("#exampleInputFile2").val("");
+	//$("#exampleInputFile3").val("");
 
 	$.post("../../ajax/evaluacion.php?op=mostrar&idley="+idley+'&idtitulo='+idtitulo+'&idcapitulo='+idcapitulo+'&idinstitucion='+idinstitucion,{idarticulo : idarticulo}, function(data, status)
 	{
@@ -240,9 +257,9 @@ function guardaryeditar(e)
 	file3 = $('input[id=exampleInputFile3]').val().replace(/C:\\fakepath\\/i, '');
 	/********************************************************/
 
-	if (file=='') {file= document.getElementById("nombrearch").value;}
-	if (file2=='') {file2= document.getElementById("nombrearch2").value;}
-	if (file3=='') {file3= document.getElementById("nombrearch3").value;}
+	if (file==''&&graba1==' ') {fileI= document.getElementById("nombrearch").value;file=fileI;}
+	if (file2==''&&graba2==' ') {fileI2= document.getElementById("nombrearch2").value;file2=fileI2;}
+	if (file3==''&&graba3==' ') {fileI3= document.getElementById("nombrearch3").value;file3=fileI3;}
 
 	/*************Recuperamos parametro de institucion*******/
 	const valores = window.location.search;
@@ -256,13 +273,9 @@ function guardaryeditar(e)
 	var idcapitulo = document.getElementById("idcapitulo").value;
 	var idarticulod = document.getElementById("idarticulo").value;
 
-	if (file!=''){file11 = idinstitucionpar + idley + idtitulo + idcapitulo + idarticulod + file;file = file11;}
-	if (file2!=''){file22 = idinstitucionpar + idley + idtitulo + idcapitulo + idarticulod + file2;file2 = file22;}
-	if (file3!=''){file33 = idinstitucionpar + idley + idtitulo + idcapitulo + idarticulod + file3;file3 = file33;}
-
-	alert('primer documento '+file);
-	alert('segundo documento '+file2);
-	alert('tercer documento '+file3);
+	if (file!=''&&fileI==' '){file11 = idinstitucionpar + idley + idtitulo + idcapitulo + idarticulod + file; file = file11;}
+	if (file2!=''&&fileI2==' '){file22 = idinstitucionpar + idley + idtitulo + idcapitulo + idarticulod + file2; file2 = file22;}
+	if (file3!=''&&fileI3==' '){file33 = idinstitucionpar + idley + idtitulo + idcapitulo + idarticulod + file3; file3 = file33;}
 
 	e.preventDefault(); //No se activará la acción predeterminada del evento
 	$("#btnGuardar").prop("disabled",true);
@@ -283,8 +296,8 @@ function guardaryeditar(e)
 	    }
 
 	});
-	limpiar();
 	cargararchivo(file,file2,file3);
+	limpiar();
 }
 
 function recuperadesinstitucion(idinstitucionpar){
@@ -323,7 +336,7 @@ function cargararchivo(file,file2,file3){
 
 function eliminaarchivo(){
 
-	var filenom = document.getElementById("nombrearch").value;
+	var filenom = graba1;
 	if (filenom!="" && filenom!=null) {
 
 		name = '../vistas/documentos/subidas/'+filenom;
@@ -339,7 +352,8 @@ function eliminaarchivo(){
 
 function eliminaarchivo2(){
 
-	var filenom = document.getElementById("nombrearch2").value;
+	//var filenom = document.getElementById("nombrearch2").value;
+	var filenom = graba2;
 	if (filenom!="" && filenom!=null) {
 
 		name = '../vistas/documentos/subidas/'+filenom;
@@ -355,7 +369,8 @@ function eliminaarchivo2(){
 
 function eliminaarchivo3(){
 
-	var filenom = document.getElementById("nombrearch3").value;
+	//var filenom = document.getElementById("nombrearch3").value;
+	var filenom = graba3;
 	if (filenom!="" && filenom!=null) {
 
 		name = '../vistas/documentos/subidas/'+filenom;
@@ -374,6 +389,8 @@ function cambiaformu(){
 	$("#EliminaArchivo").hide();
 	$("#exampleInputFile").val("");
 	//$("#nombrearch").val("");
+	graba1 = document.getElementById("nombrearch").value;
+	$("#nombrearch").val("");
 }
 
 function cambiaformu2(){
@@ -381,6 +398,8 @@ function cambiaformu2(){
 	$("#EliminaArchivo2").hide();
 	$("#exampleInputFile2").val("");
 	//$("#nombrearch2").val("");
+	graba2 = document.getElementById("nombrearch2").value;
+	$("#nombrearch2").val("");
 }
 
 function cambiaformu3(){
@@ -388,6 +407,8 @@ function cambiaformu3(){
 	$("#EliminaArchivo3").hide();
 	$("#exampleInputFile3").val("");
 	//$("#nombrearch3").val("");
+	graba3 = document.getElementById("nombrearch3").value;
+	$("#nombrearch3").val("");
 }
 
 

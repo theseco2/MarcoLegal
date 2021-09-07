@@ -53,7 +53,6 @@ $idley = $_GET['idley'];
   $stat=substr($stat, 0, -1);
   $cantidad=substr($cantidad, 0, -1);
   
-  
 
 ?>
 <!--Contenido-->

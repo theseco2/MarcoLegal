@@ -192,16 +192,10 @@ if (strlen(session_id()) < 1)
 			<?php 
             if ($_SESSION['grafica']==1)
             {
-              echo '<li class="treeview">
-              <a href="#">
-                <i class="fa fa-bar-chart"></i>
-                <span>Graficas</span>
-                <i class="fa fa-angle-left pull-right"></i>
+              echo '<li>
+              <a href="grafica1.php">
+                <i class="fa fa-bars"></i> <span>Grafica por Estatus</span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="grafica1.php"><i class="fa fa-circle-o"></i> Graficas por Estatus</a></li>
-           
-              </ul>
             </li>';
             }
             ?>

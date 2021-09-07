@@ -43,7 +43,7 @@ class ctlTitulo {
  		$data= Array();
 		
 		$url='../modulos/capitulo.php?idley=';
-		$url2='?idtit=';
+		$url2='&idtit=';
 		
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(

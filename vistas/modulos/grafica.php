@@ -19,21 +19,12 @@ if ($_SESSION['grafica']==1)
 require_once "../../modelos/Consultas.php";
 $consultas=new Consultas();
 
-//$host= $_SERVER["HTTP_HOST"];
-//$url= $_SERVER["REQUEST_URI"];
-//$url2 = "http://" . $host . $url;
 
 $idinstitucion = $_GET['idinst'];
 $idley = $_GET['idley'];
-$idtitulo = $_GET['idtit'];
-$idcapitulo = $_GET['idcap'];
 
-//$idinstitucion = 1;
-//$idley = 1;
-//$idtitulo = 1;
-//$idcapitulo = 1;
 		
- 		$rspta = Consultas::select($idley,$idtitulo,$idcapitulo);
+ 		$rspta = Consultas::select($idley);
 
  		$idinstitucionint = (int)$idinstitucion;
 		$contacomple = 0;
@@ -42,7 +33,7 @@ $idcapitulo = $_GET['idcap'];
 		$contanoeval = 0;
  		while ($reg=$rspta->fetch_object()){
  			//Recupera la marca
- 			$rspta1 = Consultas::comarca($idinstitucion,$idley,$idtitulo,$idcapitulo,$reg->idarticulo);
+ 			$rspta1 = Consultas::comarca($idinstitucion,$idley,$reg->idarticulo);
 
  			$prueba=$rspta1;
  			if ($prueba==1) {
@@ -61,6 +52,8 @@ $idcapitulo = $_GET['idcap'];
   //Quitamos la última coma
   $stat=substr($stat, 0, -1);
   $cantidad=substr($cantidad, 0, -1);
+  
+  
 
 ?>
 <!--Contenido-->
@@ -76,23 +69,14 @@ $idcapitulo = $_GET['idcap'];
                           <h1 class="box-title">Graficos Estatus de Evaluación </h1>
 						  
 						<div class="box-header with-border">
-						<div class="form-group col-lg-12 col-md-4 col-sm-4 col-xs-12">
+						
 						<label>Institución:</label>
 						<input type="text" class="form-control" name="descripcioninstitucion" id="descripcioninstitucion" maxlength="30" disabled>
-						</div>
-						<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+						
 						<label>Ley:</label>
 						<input type="text" class="form-control" name="descripcionley" id="descripcionley" maxlength="30" disabled>
-						</div>
-						<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-						<label>Titulo:</label>
-						<input type="text" class="form-control" name="descripciontitulo" id="descripciontitulo" maxlength="30" disabled>
-						</div>
-						<div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-						<label>Capitulo:</label>
-						<input type="text" class="form-control" name="descripcioncapitulo" id="descripcioncapitulo" maxlength="30" disabled>
-						</div>
-						</div>
+						
+					
                         <div class="box-tools pull-right">
                         </div>
 						</div>      						
@@ -164,7 +148,26 @@ var myChart = new Chart(ctx, {
 });
 
 var elem = document.getElementById('estatusxeva');
-elem.onclick = function() { alert("hello world"); }
+elem.onclick = function() 
+
+{
+		
+	var idinstpar = getParameterByName('idinst');
+	var idleypar = getParameterByName('idley');
+	
+	location.href = 'ConsultaEvaluacion3.php?idinst='+idinstpar+'&idley='+idleypar;
+	
+}
+
+/*=============================================
+	 FUNCION Recupera parametro
+=============================================*/
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 </script>
 

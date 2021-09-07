@@ -30,6 +30,16 @@ $ctlconsulta = new ctlConsulta();
  		echo json_encode($rspta);
 
 	break;
+	
+	case 'listar_articulos2':
+
+		$idleyM = $_REQUEST["idleypar"];
+		$idinstitucionM = $_REQUEST["idinstpar"];
+	
+		$rspta=$ctlconsulta->ctllistar_articulos2($idinstitucionM,$idleyM);
+ 		echo json_encode($rspta);
+
+	break;
 
 }
 ?> 

@@ -65,9 +65,14 @@ function cancelarform()
 =============================================*/
 function listar()
 {
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
-	var idcappar = getParameterByName('idcap');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
+	var idcappar = urlParams.get('idcap');
 	
 	tabla=$('#tbllistado').dataTable(
 	{
@@ -106,9 +111,14 @@ function guardaryeditar(e)
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 	
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
-	var idcappar = getParameterByName('idcap');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
+	var idcappar = urlParams.get('idcap');
 
 	$.ajax({
 		url: '../../ajax/articulo.php?op=guardaryeditar&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,
@@ -133,9 +143,14 @@ function guardaryeditar(e)
 =============================================*/
 function mostrar(idarticulo)
 {
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
-	var idcappar = getParameterByName('idcap');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
+	var idcappar = urlParams.get('idcap');
 
 	$.post('../../ajax/articulo.php?op=mostrar&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,{idarticulo : idarticulo}, function(data, status)
 	{
@@ -162,9 +177,14 @@ function eliminar(idarticulo)
 	bootbox.confirm("Se eliminara el articulo. ¿Está seguro?", function(result){
 		if(result)
         {
-			var idleypar = getParameterByName('idley');
-			var idtitpar = getParameterByName('idtit');
-			var idcappar = getParameterByName('idcap');
+			/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
+	var idcappar = urlParams.get('idcap');
 			
         	$.post('../../ajax/articulo.php?op=eliminar&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,{idarticulo : idarticulo}, function(e){
         		bootbox.alert(e);
@@ -180,9 +200,15 @@ function eliminar(idarticulo)
 function verificaevalua(idarticulo)
 {
 	
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
-	var idcappar = getParameterByName('idcap');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
+	var idcappar = urlParams.get('idcap');
+	
 	$.post('../../ajax/articulo.php?op=verificaevalua&idley='+idleypar+'&idtit='+idtitpar+'&idcap='+idcappar,{idarticulo : idarticulo}, function(data, status) 
     {
     	data = JSON.parse(data);
@@ -203,12 +229,16 @@ function verificaevalua(idarticulo)
 =============================================*/
 function retornacap()
 {
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
 	
-	var idleypar = getParameterByName('idley');
-	//var idtitpar = getParameterByName('idtit');
 	
-	
-	location.href = '../modulos/capitulo.php?idley='+idleypar;
+	location.href = '../modulos/capitulo.php?idley='+idleypar+'&idtit='+idtitpar;
 	
 }
 
@@ -217,7 +247,13 @@ function retornacap()
 =============================================*/
 function mostrarley()
 {
-	var idleypar = getParameterByName('idley');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	
 	$.post("../../ajax/ley.php?op=recuperar",{idleypar : idleypar}, function(data, status)
 	{
 
@@ -234,8 +270,14 @@ function mostrarley()
 =============================================*/
 function mostrartitulo()
 {
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
+	
 
 	$.post('../../ajax/titulo.php?op=recuperar&idleypar='+idleypar,{idtitpar : idtitpar}, function(data, status)
 	{
@@ -253,9 +295,14 @@ function mostrartitulo()
 =============================================*/
 function mostrarcapitulo()
 {
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
-	var idcappar = getParameterByName('idcap');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	var idtitpar = urlParams.get('idtit');
+	var idcappar = urlParams.get('idcap');
 
 	$.post('../../ajax/capitulo.php?op=recuperar&&idleypar='+idleypar+'&idtitpar='+idtitpar,{idcappar : idcappar}, function(data, status)
 	{

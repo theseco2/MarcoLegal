@@ -76,6 +76,16 @@ Class Articulo
 		return ejecutarConsulta($sql);		
 	}
 	
+	/*=============================================
+	 METODO LISTAR REGISTROS SELECT2
+	=============================================*/
+	public function select2($idley)
+	{
+		$sql=	"SELECT idtitulo, idcapitulo, idarticulo, numero, nombre, descripcion
+				FROM articulo
+				WHERE idley='$idley' ";
+		return ejecutarConsulta($sql);		
+	}
 	/*========================================================
 	 METODO VERIFICA SI HAY REGISTROS EN TABLAS DEPENDIENTES
 	==========================================================*/

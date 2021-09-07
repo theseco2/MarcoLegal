@@ -13,13 +13,13 @@ Class consultas
 	//Consulta estatus por evaluacion 
 	
 	//Trae Marca
-	public function comarca($idinstitucion,$idley,$idtitulo,$idcapitulo,$idarticulo)
+	public function comarca($idinstitucion,$idley,$idarticulo)
 	{
 		$campo = 'marca';
 		$sql="SELECT marca
 			  FROM evaluacion 
 			  WHERE idinstitucion='$idinstitucion' AND idley='$idley' 
-			  AND idtitulo='$idtitulo' AND idcapitulo='$idcapitulo' AND idarticulo='$idarticulo'";
+			  AND idarticulo='$idarticulo'";
 		return ejecutarConsultaCampo($campo,$sql);
 		//return ejecutarConsultaSimpleFila($sql);
 	}
@@ -27,11 +27,11 @@ Class consultas
 	/*=============================================
 	 METODO LISTAR REGISTROS SELECT
 	=============================================*/
-	public function select($idley,$idtitulo,$idcapitulo)
+	public function select($idley)
 	{
 		$sql=	"SELECT idarticulo, numero, nombre, descripcion
 				FROM articulo
-				WHERE idley='$idley' and idtitulo='$idtitulo' and idcapitulo='$idcapitulo'";
+				WHERE idley='$idley' ";
 		return ejecutarConsulta($sql);		
 	}
 	

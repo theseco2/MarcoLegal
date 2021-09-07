@@ -61,7 +61,13 @@ function cancelarform()
 =============================================*/
 function listar()
 {
-	var idleypar = getParameterByName('idley');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+
 	
 	tabla=$('#tbllistado').dataTable(
 	{
@@ -98,7 +104,12 @@ function guardaryeditar(e)
 	$("#btnGuardar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 	
-	var idleypar = getParameterByName('idley');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
 
 	$.ajax({
 		url: '../../ajax/titulo.php?op=guardaryeditar&idley='+idleypar,
@@ -123,7 +134,13 @@ function guardaryeditar(e)
 =============================================*/
 function mostrar(idtitulo)
 {
-	var idleypar = getParameterByName('idley');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	
 	$.post('../../ajax/titulo.php?op=mostrar&idley='+idleypar,{idtitulo : idtitulo}, function(data, status)
 	{
 		data = JSON.parse(data);		
@@ -143,7 +160,13 @@ function eliminar(idtitulo)
 	bootbox.confirm("Se eliminara el titulo. ¿Está seguro?", function(result){
 		if(result)
         {
-			var idleypar = getParameterByName('idley');
+			/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	
         	$.post('../../ajax/titulo.php?op=eliminar&idley='+idleypar,{idtitulo : idtitulo}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
@@ -157,7 +180,13 @@ function eliminar(idtitulo)
 =============================================*/
 function verificacapitulo(idtitulo)
 {
-	var idleypar = getParameterByName('idley');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
+	
 	$.post('../../ajax/titulo.php?op=verificacapitulo&idley='+idleypar,{idtitulo : idtitulo}, function(data, status) 
     {
     	data = JSON.parse(data);
@@ -178,7 +207,12 @@ function verificacapitulo(idtitulo)
 =============================================*/
 function mostrarley()
 {
-	var idleypar = getParameterByName('idley');
+	/*************Recuperamos parametro de institucion*******/
+	const valores = window.location.search;
+	//Creamos la instancia
+	const urlParams = new URLSearchParams(valores);
+	//Accedemos a los valores
+	var idleypar = urlParams.get('idley');
 	//bootbox.alert(idleypar);
 
 	$.post("../../ajax/ley.php?op=recuperar",{idleypar : idleypar}, function(data, status)

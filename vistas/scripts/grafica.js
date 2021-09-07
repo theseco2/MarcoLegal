@@ -5,12 +5,28 @@ var tabla;
 =============================================*/
 function init(){
 	
-	mostrarley();
-	mostrartitulo();
-	mostrarcapitulo();
+	mostrarinstitucion();
+	mostrarley();	
 
 }
 
+
+/*=============================================
+	 FUNCION MOSTRAR REGISTRO
+=============================================*/
+function mostrarinstitucion()
+{
+	var idinstpar = getParameterByName('idinst');
+	$.post("../../ajax/institucion.php?op=recuperar",{idinstpar : idinstpar}, function(data, status)
+	{
+
+		data = JSON.parse(data);		
+		//mostrarform(true);
+		$("#descripcioninstitucion").val(data.descripcion);
+ 		//$("#idley").val(data.idley);
+
+ 	})
+}
 
 /*=============================================
 	 FUNCION MOSTRAR REGISTRO
@@ -24,45 +40,6 @@ function mostrarley()
 		data = JSON.parse(data);		
 		//mostrarform(true);
 		$("#descripcionley").val(data.descripcion);
- 		//$("#idley").val(data.idley);
-
- 	})
-}
-
-/*=============================================
-	 FUNCION MOSTRAR REGISTRO
-=============================================*/
-function mostrartitulo()
-{
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
-
-	$.post('../../ajax/titulo.php?op=recuperar&idleypar='+idleypar,{idtitpar : idtitpar}, function(data, status)
-	{
-
-		data = JSON.parse(data);		
-		//mostrarform(true);
-		$("#descripciontitulo").val(data.descripcion);
- 		//$("#idley").val(data.idley);
-
- 	})
-}
-
-/*=============================================
-	 FUNCION MOSTRAR REGISTRO
-=============================================*/
-function mostrarcapitulo()
-{
-	var idleypar = getParameterByName('idley');
-	var idtitpar = getParameterByName('idtit');
-	var idcappar = getParameterByName('idcap');
-
-	$.post('../../ajax/capitulo.php?op=recuperar&&idleypar='+idleypar+'&idtitpar='+idtitpar,{idcappar : idcappar}, function(data, status)
-	{
-
-		data = JSON.parse(data);		
-		//mostrarform(true);
-		$("#descripcioncapitulo").val(data.descripcion);
  		//$("#idley").val(data.idley);
 
  	})

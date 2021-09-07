@@ -30,27 +30,18 @@ if ($_SESSION['grafica']==1)
 						</div>  
 						
 						 <div class="panel-body" id="formulariofiltros">
-						 <div class="form-inline col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						 <div class="form-inline col-lg-6 col-md-12 col-sm-12 col-xs-12">
                           <label>Institución:</label>
                           <select name="idinstitucion" id="idinstitucion" class="form-control selectpicker" data-live-search="true" required>
                           </select>
                         </div>
 						
-						 <div class="form-inline col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						 <div class="form-inline col-lg-6 col-md-4 col-sm-6 col-xs-12">
                           <label>Ley:</label>
                           <select name="idley" id="idley" class="form-control selectpicker" data-live-search="true" required>
                           </select>
                         </div>
-                        <div class="form-inline col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                          <label>Titulo:</label>
-                          <select name="idtitulo" id="idtitulo" class="form-control selectpicker" data-live-search="true" required>
-                          </select>
-                        </div>
-                        <div class="form-inline col-lg-4 col-md-6 col-sm-4 col-xs-12">
-                          <label>Capitulo:</label>
-                          <select name="idcapitulo" id="idcapitulo" class="form-control selectpicker" data-live-search="true" required>
-                          </select>
-                        </div>
+                    
 						</div>
                        <!-- <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">-->
                          <div class="box-header with-border">

@@ -81,9 +81,11 @@ Class Articulo
 	=============================================*/
 	public function select2($idley)
 	{
-		$sql=	"SELECT idtitulo, idcapitulo, idarticulo, numero, nombre, descripcion
-				FROM articulo
-				WHERE idley='$idley' ";
+		$sql=	"SELECT a.idtitulo, a.idcapitulo, a.idarticulo, a.numero, a.nombre, a.descripcion, b.descripcion as titulo, c.descripcion as capitulo
+				FROM articulo a
+				INNER JOIN titulo b ON a.idtitulo = b.idtitulo
+			    INNER JOIN capitulo c ON a.idcapitulo = c.idcapitulo
+				WHERE a.idley='$idley' ";
 		return ejecutarConsulta($sql);		
 	}
 	/*========================================================

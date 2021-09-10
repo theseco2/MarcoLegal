@@ -41,6 +41,8 @@ if ($_SESSION['grafica']==1)
                         <br>
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
+							<th>Titulo</th>
+							<th>Capitulo</th>
                             <th>Numero</th>
                             <th>Nombre</th>
                             <th>Observacion</th> 
@@ -50,6 +52,8 @@ if ($_SESSION['grafica']==1)
                           <tbody>                            
                           </tbody>
                           <tfoot>
+							<th>Titulo</th>
+							<th>Capitulo</th>
                             <th>Numero</th>
                             <th>Nombre</th>
                             <th>Observacion</th> 

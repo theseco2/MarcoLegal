@@ -21,7 +21,7 @@ class ctlConsulta {
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>'<a target="_self" href="'.$url.$reg->idinstitucion.'"> <button class="btn btn-success">Leyes</button></a>',
+ 				"0"=>'<a target="_self" href="'.$url.$reg->idinstitucion.'"> <button class="btn btn-success">Evaluación</button></a>',
  				"1"=>$reg->descripcion
  				);
  		}
@@ -127,11 +127,13 @@ class ctlConsulta {
  			//////////////////////////////////////////////////////////////////////////////////////////////////////
 
  			$data[]=array(
- 				"0"=>$reg->numero,
- 				"1"=>$reg->nombre,
- 				"2"=>$observacion,
- 				"3"=>$etiqueta,
- 				"4"=>$catdoc
+				"0"=>$reg->titulo,
+				"1"=>$reg->capitulo,
+ 				"2"=>$reg->numero,
+ 				"3"=>$reg->nombre,
+ 				"4"=>$observacion,
+ 				"5"=>$etiqueta,
+ 				"6"=>$catdoc
  				);
  		}
  		$results = array(

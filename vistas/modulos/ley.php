@@ -48,7 +48,7 @@ if ($_SESSION['administrar']==1)
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Descripción(*):</label>
                             <input type="hidden" name="idley" id="idley">
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="60" placeholder="Descripcion" required>
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="200" placeholder="Descripcion" required>
                           </div>
 						  
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

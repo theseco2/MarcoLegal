@@ -46,7 +46,7 @@ if ($_SESSION['administrar']==1)
                             <th>Opciones</th>
 							<th>Numero</th>
 							<th>Nombre</th>
-							<th>Descripcion</th>
+							
                           </thead>
                           <tbody>                            
                           </tbody>
@@ -54,7 +54,7 @@ if ($_SESSION['administrar']==1)
                             <th>Opciones</th>
 							<th>Numero</th>
 							<th>Nombre</th>
-							<th>Descripcion</th>                    
+							                   
                           </tfoot>
                         </table>
                     </div>
@@ -70,12 +70,13 @@ if ($_SESSION['administrar']==1)
 							
 							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">								
 							<label>Nombre(*):</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="60" placeholder="Nombre" required>
+                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="200" placeholder="Nombre" required>
 							</div>
 							
-							<div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<label>Descripción(*):</label>
-                            <input type="textarea" rows="10" cols="40" class="form-control" name="descripcion" id="descripcion" maxlength="500" placeholder="Descripcion" required>
+                            <!--<input type="textarea" rows="10" cols="40" class="form-control" name="descripcion" id="descripcion" maxlength="500" placeholder="Descripcion" required>-->
+							<textarea id="descripcion" name="descripcion" rows="10" class="form-control"></textarea>
 							</div>
 						  
 							<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

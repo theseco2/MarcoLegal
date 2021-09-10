@@ -194,7 +194,7 @@ if (strlen(session_id()) < 1)
             {
               echo '<li>
               <a href="grafica1.php">
-                <i class="fa fa-bars"></i> <span>Grafica por Estatus</span>
+                <i class="fa fa-bar-chart"></i> <span>Grafica por Estatus</span>
               </a>
             </li>';
             }

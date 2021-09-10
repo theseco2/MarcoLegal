@@ -35,7 +35,7 @@ class ctlEvaluacion {
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>'<a target="_self" href="'.$url.$reg->idinstitucion.'"> <button class="btn btn-success">Leyes</button></a>',
+ 				"0"=>'<a target="_self" href="'.$url.$reg->idinstitucion.'"> <button class="btn btn-success">Evaluación</button></a>',
  				"1"=>$reg->descripcion
  				);
  		}
@@ -94,8 +94,8 @@ class ctlEvaluacion {
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.','.$idinstitucionint.')"><i class="fa fa-pencil"></i></button>',
  				"1"=>$reg->numero,
  				"2"=>$reg->nombre,
- 				"3"=>$reg->descripcion,
- 				"4"=>$etiqueta
+ 			
+ 				"3"=>$etiqueta
  				);
  		}
  		$results = array(

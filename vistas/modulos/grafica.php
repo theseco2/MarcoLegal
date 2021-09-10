@@ -53,6 +53,18 @@ $idley = $_GET['idley'];
   $stat=substr($stat, 0, -1);
   $cantidad=substr($cantidad, 0, -1);
   
+	if ($contanoeval > $contaparcom and $contanoeval > $contanocomp and $contanoeval > $contacomple) {
+ 		$recomendacion = 'Apreaciable gerente se recomienda que se realice una auditoria de los articulos que no han sido evaluados ya que estos son la mayoria.';
+ 	}elseif ($contanocomp > $contacomple and $contanocomp > $contaparcom and $contanocomp > $contanoeval) {
+ 		$recomendacion = 'Apreciable gerente se recomienda revisar los articulos que no cumplen y hacer las gestiones necesarias para cumplir con los requisitos y ejecutar una nueva auditoria.';
+ 	}elseif ($contaparcom > $contanocomp and $contaparcom > $contacomple and $contaparcom > $contanoeval) {
+ 		$recomendacion = 'Apreciable gerente se recomienda revisar los articulos que no cumplen completamente los requisitos y ejecutar una nueva auditoria.';
+	}elseif ($contacomple > 0 and $contaparcom == 0 and $contanoeval == 0 and contanocomp == 0) {
+ 		$recomendacion = 'Apreciable gerente la evaluacion es satisfactoria ya que cumple con todos los requisitos de la ley.';	
+	}elseif (($contacomple > $contanocomp and $contacomple > $contaparcom and $contacomple > $contanoeval) and ($contaparcom == 0 or $contanoeval == 0 or contanocomp == 0)) 
+ 		$recomendacion = 'Apreciable gerente la mayoria de los articulos cumplen con los requisitos requeridos se recomienda crear acciones para cumplir con los articulos aun pendientes.';	
+ 			
+ 
 
 ?>
 <!--Contenido-->
@@ -78,7 +90,11 @@ $idley = $_GET['idley'];
 					
                         <div class="box-tools pull-right">
                         </div>
-						</div>      						
+						</div>  
+						
+						<div class="box-header with-border">
+						<h4> <?php echo $recomendacion; ?> </h4>
+						</div>  
                        <!-- <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">-->
                           <div class="box box-primary">                         
                                 <!--<canvas id="estuiosxdeph" width="400" height="300"></canvas>-->
@@ -120,17 +136,18 @@ var myChart = new Chart(ctx, {
             label: 'Estatus de Evaluación',
             data: [<?php echo $cantidad; ?>],
             backgroundColor: [
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)'
+				'#b9b9b9'
+                  
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-             
+				'rgba(75, 192, 192, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(255,99,132,1)',
+                '#9b9b9b'
+                          
             ],
             borderWidth: 1
         }]
@@ -177,5 +194,3 @@ function getParameterByName(name) {
 }
 ob_end_flush();
 ?>
-
-

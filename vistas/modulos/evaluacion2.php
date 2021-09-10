@@ -56,7 +56,7 @@ if ($_SESSION['evaluacion']==1)
                             <th>Opcion</th>
                             <th>Numero</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th> 
+                           
                             <th>Estatus</th>
                           </thead>
                           <tbody>                            
@@ -65,7 +65,7 @@ if ($_SESSION['evaluacion']==1)
                             <th>Opcion</th>
                             <th>Numero</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th> 
+                            
                             <th>Estatus</th>
                           </tfoot>
                         </table>
@@ -101,9 +101,9 @@ if ($_SESSION['evaluacion']==1)
                             <label>Articulo:</label>
                             <input type="text" class="form-control" name="descripcionArt" id="descripcionArt" maxlength="60" disabled>
                           </div>
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label>Descripcion Articulo:</label>
-                            <textarea id="descripcionArtD" name="descripcionArtD" rows="2" class="form-control" disabled></textarea>
+                            <textarea id="descripcionArtD" name="descripcionArtD" rows="5" class="form-control" disabled></textarea>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Estatus(*):</label>

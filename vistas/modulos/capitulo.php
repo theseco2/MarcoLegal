@@ -58,7 +58,7 @@ if ($_SESSION['administrar']==1)
                             <label>Nombre(*):</label>
                              <!-- <input type="hidden" name="idregion" id="idregion">-->
 							<input type="hidden" name="idcapitulo" id="idcapitulo">
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="60" placeholder="Descripcion" required>
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="200" placeholder="Descripcion" required>
                           </div>
 						  
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

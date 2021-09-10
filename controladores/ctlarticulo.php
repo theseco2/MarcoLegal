@@ -55,8 +55,8 @@ class ctlArticulo {
  				"0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->idarticulo.')"><i class="fa fa-pencil"></i></button>'.
  					'<button class="btn btn-danger" onclick="verificaevalua('.$reg->idarticulo.')"><i class="fa fa-trash"></i></button>',
  				"1"=>$reg->numero,
-				"2"=>$reg->nombre,
-				"3"=>$reg->descripcion
+				"2"=>$reg->nombre
+				
  				);
  		}
  		$results = array(

@@ -62,6 +62,9 @@ $idley = $_GET['idley'];
 	}elseif ($contacomple >= 0 and $contaparcom == 0 and $contanoeval == 0 and $contanocomp == 0) {
  		$recomendacion = 'Apreciable gerente la evaluacion es satisfactoria ya que cumple con todos los requisitos de la ley.';	
 	}elseif (($contacomple >= $contanocomp and $contacomple >= $contaparcom and $contacomple >= $contanoeval) and ($contaparcom == 0 or $contanoeval == 0 or $contanocomp == 0)) 
+	}elseif ($contacomple > 0 and $contaparcom == 0 and $contanoeval == 0 and $contanocomp == 0) {
+ 		$recomendacion = 'Apreciable gerente la evaluacion es satisfactoria ya que cumple con todos los requisitos de la ley.';	
+	}elseif (($contacomple > $contanocomp and $contacomple > $contaparcom and $contacomple > $contanoeval) and ($contaparcom == 0 or $contanoeval == 0 or $contanocomp == 0)) 
  		$recomendacion = 'Apreciable gerente la mayoria de los articulos cumplen con los requisitos requeridos se recomienda crear acciones para cumplir con los articulos aun pendientes.';	
  			
  

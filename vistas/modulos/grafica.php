@@ -53,15 +53,15 @@ $idley = $_GET['idley'];
   $stat=substr($stat, 0, -1);
   $cantidad=substr($cantidad, 0, -1);
   
-	if ($contanoeval > $contaparcom and $contanoeval > $contanocomp and $contanoeval > $contacomple) {
+	if ($contanoeval >= $contaparcom and $contanoeval >= $contanocomp and $contanoeval >= $contacomple) {
  		$recomendacion = 'Apreaciable gerente se recomienda que se realice una auditoria de los articulos que no han sido evaluados ya que estos son la mayoria.';
- 	}elseif ($contanocomp > $contacomple and $contanocomp > $contaparcom and $contanocomp > $contanoeval) {
+ 	}elseif ($contanocomp >= $contacomple and $contanocomp >= $contaparcom and $contanocomp >= $contanoeval) {
  		$recomendacion = 'Apreciable gerente se recomienda revisar los articulos que no cumplen y hacer las gestiones necesarias para cumplir con los requisitos y ejecutar una nueva auditoria.';
- 	}elseif ($contaparcom > $contanocomp and $contaparcom > $contacomple and $contaparcom > $contanoeval) {
+ 	}elseif ($contaparcom >= $contanocomp and $contaparcom >= $contacomple and $contaparcom >= $contanoeval) {
  		$recomendacion = 'Apreciable gerente se recomienda revisar los articulos que no cumplen completamente los requisitos y ejecutar una nueva auditoria.';
-	}elseif ($contacomple > 0 and $contaparcom == 0 and $contanoeval == 0 and contanocomp == 0) {
+	}elseif ($contacomple >= 0 and $contaparcom == 0 and $contanoeval == 0 and $contanocomp == 0) {
  		$recomendacion = 'Apreciable gerente la evaluacion es satisfactoria ya que cumple con todos los requisitos de la ley.';	
-	}elseif (($contacomple > $contanocomp and $contacomple > $contaparcom and $contacomple > $contanoeval) and ($contaparcom == 0 or $contanoeval == 0 or contanocomp == 0)) 
+	}elseif (($contacomple >= $contanocomp and $contacomple >= $contaparcom and $contacomple >= $contanoeval) and ($contaparcom == 0 or $contanoeval == 0 or $contanocomp == 0)) 
  		$recomendacion = 'Apreciable gerente la mayoria de los articulos cumplen con los requisitos requeridos se recomienda crear acciones para cumplir con los articulos aun pendientes.';	
  			
  
